@@ -1,2 +1,2 @@
 # PSS
-Web/desktop app using .NET/Angular
+Web app using .NET/Angular
