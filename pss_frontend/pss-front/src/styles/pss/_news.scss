@@ -62,7 +62,15 @@
     transform: scale(1.1);
   }
 
-  .banner{
+  .banner {
     transition: transform .25s ease;
+  }
+
+  .more-info {
+    margin-top: 105px !important;
+
+    .btn-more-width {
+      width: 85% !important;
+    }
   }
 }

@@ -5,7 +5,7 @@
       src="../../assets/img/running.png"
       alt=""
     />
-    <a routerLink="/" class="navbar-brand navbar-item-logo font-title">PSS</a>
+    <a routerLink="/" class="navbar-brand navbar-item-logo">PSS</a>
 
     <button
       class="navbar-toggler"
@@ -31,7 +31,14 @@
           <a href="#videos" class="link-item left-right">Nagrania</a>
         </li>
       </ul>
-      <app-login></app-login>
+      <form class="d-flex" action="">
+        <button class="btn" type="submit">
+          <a class="btn btn-login" routerLink="/login">Zaloguj</a>
+        </button>
+        <button class="btn" type="submit">
+          <a class="btn btn-register">Rejestracja</a>
+        </button>
+      </form>
     </div>
   </div>
 </nav>

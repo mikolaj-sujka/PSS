@@ -1,14 +1,58 @@
-.btn {
+.container-login {
+    margin-top: 100px !important;
+    max-width: 960px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    &-register, &-login {
-        border-radius: 0px !important;
-        width: 120px !important;
-        color: #1E90FF !important;
-        border-bottom: 2px solid #1E90FF !important;
-        
-        &:hover {
-            background-color: #1E90FF !important;
-            color: #fff !important;
-        }
-    }
+.img-login {
+  margin-left: 8rem;
+  margin-top: 1.5rem;
+}
+
+.content {
+  margin: 8%;
+  background-color: #fff;
+  padding: 4rem 2rem 4rem 2rem;
+  box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, .25);
+}
+
+.signing-txt-login {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600 !important;
+}
+
+.form-login {
+  display: block !important;
+  width: 100% !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  border-color: #1E90FF !important;
+  border-style: solid !important;
+  border-width: 0 0 1px 0 !important;
+  padding: 1.5rem 1rem 0.9rem 1.5rem !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  background-clip: padding-box !important;
+}
+
+.form-login:focus {
+  color: #495057 !important;
+  background-color: #fff !important;
+  border-color: #fff !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.btn-login {
+  border-color: #1E90FF;
+  color: #1E90FF;
+}
+
+.btn-login:hover {
+  background-color: rgba(0, 0, 139, 0.7);
+  color: #fff;
 }

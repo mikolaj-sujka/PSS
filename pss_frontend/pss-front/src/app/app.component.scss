@@ -1,0 +1,12 @@
+/* smooth transition */
+router-outlet {
+  display: none;
+}
+
+.routeContainer {
+  position: relative;
+}
+
+.routeContainer>* {
+  display: block;
+}
