@@ -1,0 +1,19 @@
+.media-container {
+  .image-top {
+    text-align: center;
+  }
+
+  .medias-container {
+    height: 560px !important;
+
+    .background-social {
+      background-color: #1E90FF !important;
+      width: 100%;
+      height: 560px !important;
+      opacity: 40% !important;
+      z-index: -1;
+      position: absolute;
+      top: 10px;
+    }
+  }
+}

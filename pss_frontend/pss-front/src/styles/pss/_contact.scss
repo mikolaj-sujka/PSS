@@ -1,0 +1,49 @@
+.contact-container {
+
+  .top-contact {
+    text-align: center !important;
+  }
+
+  .phone-container {
+    height: 760px !important;
+
+    .margin-phone {
+      margin: 0 !important;
+    }
+
+    .phone-ic, p {
+      margin-left: 20px !important;
+    }
+
+    .phone-image-container {
+      img {
+        max-height: 270px !important;
+        z-index: 1;
+      }
+    }
+
+    .background-contact {
+      position: absolute;
+      top: 88px;
+      background-color: #1E90FF !important;
+      opacity: 40% !important;
+      height: 700px !important;
+      z-index: -1;
+    }
+  }
+
+  .mail-container {
+    height: 500px !important;
+
+    .mail-image-container {
+      img {
+
+        max-height: 270px !important;
+      }
+    }
+
+    h1, .mail-ic {
+      margin-left: 20px;
+    }
+  }
+}

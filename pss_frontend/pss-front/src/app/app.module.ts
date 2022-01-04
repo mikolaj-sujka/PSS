@@ -9,6 +9,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { NewsViewComponent } from './home-page/news-view/news-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SocialMediaComponent } from './subpage/social-media/social-media.component';
+import { AboutUsComponent } from './subpage/about-us/about-us.component';
+import { ContactComponent } from './subpage/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     HomePageComponent,
     FooterComponent,
-    NewsViewComponent
+    NewsViewComponent,
+    SocialMediaComponent,
+    AboutUsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
