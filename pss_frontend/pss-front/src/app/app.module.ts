@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SocialMediaComponent } from './subpage/social-media/social-media.component';
 import { AboutUsComponent } from './subpage/about-us/about-us.component';
 import { ContactComponent } from './subpage/contact/contact.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ContactComponent } from './subpage/contact/contact.component';
     NewsViewComponent,
     SocialMediaComponent,
     AboutUsComponent,
-    ContactComponent
+    ContactComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

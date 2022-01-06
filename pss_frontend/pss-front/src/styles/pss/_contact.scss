@@ -1,49 +1,36 @@
 .contact-container {
+  width: 75% !important;
 
-  .top-contact {
-    text-align: center !important;
+  .form-contact {
+    // margin-left: 80px !important;
+    // padding-right: 0px !important;
   }
 
-  .phone-container {
-    height: 760px !important;
-
-    .margin-phone {
-      margin: 0 !important;
-    }
-
-    .phone-ic, p {
-      margin-left: 20px !important;
-    }
-
-    .phone-image-container {
-      img {
-        max-height: 270px !important;
-        z-index: 1;
-      }
-    }
-
-    .background-contact {
-      position: absolute;
-      top: 88px;
-      background-color: #1E90FF !important;
-      opacity: 40% !important;
-      height: 700px !important;
-      z-index: -1;
-    }
+  img {
+    width: 514px !important;
+    height: 440px !important;
   }
 
-  .mail-container {
-    height: 500px !important;
+  .text-pss-color {
+    color: #1E90FF !important;
+  }
 
-    .mail-image-container {
-      img {
+  .form-group {
+    width: 400px !important;
+  }
 
-        max-height: 270px !important;
-      }
-    }
+  .contact-label {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+  }
 
-    h1, .mail-ic {
-      margin-left: 20px;
-    }
+  .contact-button{
+    width: 400px !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+  }
+
+  .offset-md-2 {
+    margin-left: 14.66666667% !important;
   }
 }

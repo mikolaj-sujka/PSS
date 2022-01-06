@@ -3,6 +3,16 @@
     text-align: center;
   }
 
+  .font-pss-color{
+    color: #1E90FF !important;
+  }
+
+  .social-media-image {
+    img {
+      width: 600px !important;
+    }
+  }
+
   .medias-container {
     height: 560px !important;
 
@@ -13,7 +23,7 @@
       opacity: 40% !important;
       z-index: -1;
       position: absolute;
-      top: 10px;
+      top: 140px;
     }
   }
 }
