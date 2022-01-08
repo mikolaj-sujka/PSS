@@ -6,7 +6,11 @@ import {
   group,
   animate,
 } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+
+//lukasz
+import { AuthService } from "./auth.service";
+
 
 @Component({
   selector: 'app-root',
@@ -105,7 +109,21 @@ import { Component } from '@angular/core';
     ]),
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  //lukasz
+  constructor(
+    private authService: AuthService,
+    // private errorService: ErrorService
+  ) {}
+
+  ngOnInit() {
+    this.authService.autoAuthUser();
+    // this.errorSub = this.errorService.getErrorListener().subscribe(
+    //   message => this.hasError = message !== null
+    // );
+  }
+
   title = 'PSS';
 
   getDepth(outlet: any) {
