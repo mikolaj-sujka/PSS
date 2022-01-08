@@ -29,12 +29,22 @@
         </li>
       </ul>
       <form class="d-flex" action="">
-        <button class="btn" type="submit">
-          <a class="btn btn-login" routerLink="/login">Zaloguj</a>
+        <div class="btn" type="submit" *ngIf="userIsAuthenticated">
+          <a class="btn btn-login" routerLink="/list">Lista</a>
+        </div>
+        <div class="btn" type="submit" *ngIf="userIsAuthenticated">
+          <a class="btn btn-login" routerLink="/create">Dodaj drużyne</a>
+        </div>
+        <button class="btn" type="submit" *ngIf="!userIsAuthenticated">
+          <a class="btn btn-login" routerLink="/auth/login" >Zaloguj</a>
         </button>
-        <button class="btn" type="submit">
-          <a class="btn btn-register" routerLink="/register">Rejestracja</a>
+        <button class="btn" type="submit" *ngIf="!userIsAuthenticated">
+          <a class="btn btn-register" routerLink="/auth/register">Rejestracja</a>
         </button>
+        <button class="btn" type="submit" *ngIf="userIsAuthenticated" (click)="onLogout()">
+          <span class="btn btn-login">Wyloguj</span>
+        </button>
+
       </form>
     </div>
   </div>

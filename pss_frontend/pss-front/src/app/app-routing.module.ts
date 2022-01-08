@@ -1,25 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
-// Components 
+// Components
 import { HomePageComponent } from './home-page/home-page.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { PostListComponent } from './posts/post-list/post-list.component';
 import { AboutUsComponent } from './subpage/about-us/about-us.component';
 import { ContactComponent } from './subpage/contact/contact.component';
 import { SocialMediaComponent } from './subpage/social-media/social-media.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent,  data: { title: 'homepage', depth: 1 }},
-  { path: 'login', component: LoginComponent, data: { title: 'loginPage', depth: 2, bodyClass: 'login'}},
   { path: 'socialmedia', component: SocialMediaComponent, data: { title: 'socialmediaPage', depth: 2, bodyClass: 'socialmedia'}},
   { path: 'about', component: AboutUsComponent, data: { title: 'aboutUsPage', depth: 2, bodyClass: 'aboutus'}},
   { path: 'contact', component: ContactComponent, data: { title: 'contactPage', depth: 2, bodyClass: 'contact'}},
-  { path: 'register', component: RegisterComponent, data: { title: 'registerPage', depth: 2, bodyClass: 'register'}}
+  { path: "edit/:postId", component: PostCreateComponent, data: { title: 'contactPage', depth: 2, bodyClass: 'contact'},canActivate: [AuthGuard] },
+  { path: "create", component: PostCreateComponent,data: { title: 'createPage', depth: 2, bodyClass: 'create'}, canActivate: [AuthGuard] },
+  { path: "list", component: PostListComponent,data: { title: 'listPage', depth: 2, bodyClass: 'list'}, canActivate: [AuthGuard] },
+  { path: "auth", loadChildren: ()=> import("./auth.module").then(m => m.AuthModule) }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule {}
