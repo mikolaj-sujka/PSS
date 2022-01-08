@@ -2,6 +2,9 @@ const app = require("./pss-back/app");
 const debug = require("debug")("node-angular");
 const http = require("http");
 
+
+const db = require("./database.js") //do wywalenia
+
 const normalizePort = val => {
   var port = parseInt(val, 10);
 
@@ -50,3 +53,61 @@ const server = http.createServer(app);
 server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port);
+
+
+/////////////////////////////////////////////////////// do wywalenia ///////////////////////////
+
+app.get("/api/v1/users", (req, res, next) => {
+  let sql = "select * from user"
+  let params = []
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+      return;
+    }
+    res.json(rows)
+  });
+});
+
+app.get("/api/v1/user/:name&:city&:discipline", (req, res, next) => {
+  const name = req.params.name
+  const city = req.params.city
+  const discipline = req.params.discipline
+
+  let flag = 0
+  let search = "where "
+  if (name != "any") {
+    search += `user.name LIKE '%` + name + `%'`;
+    flag = 1
+  }
+  if (city != "any") {
+    if (flag == 1)
+      search += ` and user.city = "` + city + `"`;
+    else {
+      search += `user.city = "` + city + `"`;
+      flag = 1
+    }
+  }
+  if (discipline != "any") {
+    if (flag == 1)
+      search += ` and user.discipline = "` + discipline + `"`;
+    else {
+      search += `user.discipline = "` + discipline + `"`;
+      flag = 1
+    }
+  }
+  let sql = "";
+  if (flag == 0)
+    sql = "select * from user;"
+  else
+    sql = "select * from user " + search + ";"
+
+  let params = []
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+      return;
+    }
+    res.json(rows)
+  });
+});

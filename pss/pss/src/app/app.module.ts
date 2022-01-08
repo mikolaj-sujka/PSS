@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { PostListComponent } from "../app/posts/post-list/post-list.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { SearchUserComponent } from './search-user/search-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,12 +43,14 @@ import { RouterModule } from "@angular/router";
     PostCreateComponent,
     PostListComponent,
     //lukasz
-    ErrorComponent
+    ErrorComponent,
+    SearchUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     //lukasz
     HttpClientModule,
     AngularMaterialModule,
