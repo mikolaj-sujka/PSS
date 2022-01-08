@@ -3,7 +3,7 @@ import { Subscription } from "rxjs";
 
 import { Post } from "../post.model";
 import { PostsService } from "../posts.service";
-import { AuthService } from "../../auth.service";
+import { AuthService } from "../../services/auth.service";
 import { PageEvent } from "@angular/material/paginator";
 
 @Component({

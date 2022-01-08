@@ -16,10 +16,10 @@ import { ContactComponent } from './subpage/contact/contact.component';
 
 //lukasz
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { AuthInterceptor } from "./auth-interceptor";
-import { ErrorInterceptor } from "./error-interceptor";
+import { AuthInterceptor } from "./interceptors/auth-interceptor";
+import { ErrorInterceptor } from "./interceptors/error-interceptor";
 import { ErrorComponent } from "./error/error.component";
-import { AngularMaterialModule } from "./angular-material.module";
+import { AngularMaterialModule } from "./modules/angular-material.module";
 //import { PostsModule } from "./posts/posts.module";
 
 

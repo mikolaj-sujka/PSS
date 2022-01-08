@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 // Components
 import { HomePageComponent } from './home-page/home-page.component';
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: "edit/:postId", component: PostCreateComponent, data: { title: 'contactPage', depth: 2, bodyClass: 'contact'},canActivate: [AuthGuard] },
   { path: "create", component: PostCreateComponent,data: { title: 'createPage', depth: 2, bodyClass: 'create'}, canActivate: [AuthGuard] },
   { path: "list", component: PostListComponent,data: { title: 'listPage', depth: 2, bodyClass: 'list'}, canActivate: [AuthGuard] },
-  { path: "auth", loadChildren: ()=> import("./auth.module").then(m => m.AuthModule) }
+  { path: "auth", loadChildren: ()=> import("./modules/auth.module").then(m => m.AuthModule) }
 ];
 
 @NgModule({

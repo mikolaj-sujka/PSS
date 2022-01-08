@@ -5,7 +5,7 @@ import { Subscription } from "rxjs";
 
 import { PostsService } from "../posts.service";
 import { Post } from "../post.model";
-import { AuthService } from "../../auth.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-post-create",
