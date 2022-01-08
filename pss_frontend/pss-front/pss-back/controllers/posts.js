@@ -8,8 +8,6 @@ exports.createPost = (req, res, next) => {
     content: req.body.content,
     creator: req.userData.userId
   });
-  console.log(req.userData.userId);
-  console.log("wtf")
   post
     .save()
     .then(createdPost => {
@@ -22,7 +20,6 @@ exports.createPost = (req, res, next) => {
       });
     })
     .catch(error => {
-      //console.log(error)
       res.status(500).json({
         message: "Creating a post failed!"
       });

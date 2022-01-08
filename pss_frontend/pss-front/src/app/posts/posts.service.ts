@@ -61,7 +61,7 @@ export class PostsService {
 
   addPost(title: string, content: string) {
     const postData: Post = { id: null, title: title, content: content,creator:null };
-    console.log("czemu")
+
     this.http
       .post<{ message: string; post: Post }>(
         BACKEND_URL,
