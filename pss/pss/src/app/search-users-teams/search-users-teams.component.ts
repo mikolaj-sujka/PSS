@@ -7,10 +7,10 @@ import {TeamService} from "../services/team.service";
 
 @Component({
   selector: 'app-search-user',
-  templateUrl: './search-user.component.html',
-  styleUrls: ['./search-user.component.scss']
+  templateUrl: './search-users-teams.component.html',
+  styleUrls: ['./search-users-teams.component.scss']
 })
-export class SearchUserComponent implements OnInit {
+export class SearchUsersTeamsComponent implements OnInit {
 
   users: User[] = [];
   teams: Team[] = [];

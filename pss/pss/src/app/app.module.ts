@@ -24,7 +24,7 @@ import { ContactComponent } from './subpage/contact/contact.component';
 import { PostCreateComponent } from "../app/posts/post-create/post-create.component";
 import { PostListComponent } from "../app/posts/post-list/post-list.component";
 import { ErrorComponent } from "./error/error.component";
-import { SearchUserComponent } from './search-user/search-user.component';
+import { SearchUsersTeamsComponent } from './search-users-teams/search-users-teams.component';
 
 // 3rd
 import { AuthInterceptor } from "./interceptors/auth-interceptor";
@@ -56,7 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PostCreateComponent,
     PostListComponent,
     ErrorComponent,
-    SearchUserComponent,
+    SearchUsersTeamsComponent,
     MainPageComponent
   ],
   imports: [
