@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: "edit/:postId", component: PostCreateComponent, data: { title: 'contactPage', depth: 2, bodyClass: 'contact'},canActivate: [AuthGuard] },
   { path: "create", component: PostCreateComponent,data: { title: 'createPage', depth: 2, bodyClass: 'create'}, canActivate: [AuthGuard] },
   { path: "list", component: PostListComponent,data: { title: 'listPage', depth: 2, bodyClass: 'list'}, canActivate: [AuthGuard] },
-  { path: "search-user", component: SearchUserComponent, data: {title: 'serachUser', depth: 2, bodyClass: 'seartchUser'}}
+  { path: "search-user", component: SearchUserComponent, data: {title: 'serachUser', depth: 2, bodyClass: 'seartchUser'}},
   { path: "auth", loadChildren: ()=> import("./modules/auth.module").then(m => m.AuthModule) }
 ];
 

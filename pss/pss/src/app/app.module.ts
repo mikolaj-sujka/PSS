@@ -24,6 +24,7 @@ import { ContactComponent } from './subpage/contact/contact.component';
 import { PostCreateComponent } from "../app/posts/post-create/post-create.component";
 import { PostListComponent } from "../app/posts/post-list/post-list.component";
 import { ErrorComponent } from "./error/error.component";
+import { SearchUserComponent } from './search-user/search-user.component';
 
 // 3rd
 import { AuthInterceptor } from "./interceptors/auth-interceptor";
@@ -41,12 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ]);
 }
 
-import { PostCreateComponent } from "../app/posts/post-create/post-create.component";
-import { PostListComponent } from "../app/posts/post-list/post-list.component";
-import { ReactiveFormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
-import { SearchUserComponent } from './search-user/search-user.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,8 +56,7 @@ import { SearchUserComponent } from './search-user/search-user.component';
     PostCreateComponent,
     PostListComponent,
     ErrorComponent,
-    SearchUserComponent
-    ErrorComponent,
+    SearchUserComponent,
     MainPageComponent
   ],
   imports: [
