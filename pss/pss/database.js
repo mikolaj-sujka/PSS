@@ -40,7 +40,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 
     db.run(
       `CREATE TABLE team(
-            id_user INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             name text,
             city text,
             discipline text
