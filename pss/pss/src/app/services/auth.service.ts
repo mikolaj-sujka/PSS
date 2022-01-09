@@ -1,10 +1,18 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+
+// rxjs 
 import { Subject } from "rxjs";
 
+// environment 
 import { environment } from "../../environments/environment";
+
+// models
 import { AuthData } from "../models/auth-data.model";
+
+//3rd
+import { NgxSpinnerService } from "ngx-spinner";
 
 const BACKEND_URL = environment.apiUrl + "/user/";
 
@@ -16,7 +24,7 @@ export class AuthService {
   private userId: string;
   private authStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private spinnerService: NgxSpinnerService) {}
 
   getToken() {
     return this.token;
@@ -101,7 +109,17 @@ export class AuthService {
     this.userId = null;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
-    this.router.navigate(["/"]);
+
+    this.spinnerService.show(undefined, {
+      type: 'timer',
+      bdColor: 'rgba(255,255,255,0.8)',
+      color: '#1E90FF',
+      size: 'large',
+    });
+    setTimeout(() => {
+      this.spinnerService.hide();
+      this.router.navigate(["/"]);
+    }, 2000);
   }
 
   private setAuthTimer(duration: number) {

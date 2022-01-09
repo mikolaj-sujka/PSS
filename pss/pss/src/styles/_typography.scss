@@ -16,6 +16,11 @@
   text-transform: uppercase;
 }
 
+
+.text-pss-color {
+  color: #1E90FF !important;
+}
+
 .font-contact {
   font-size: 35px !important;
 }
@@ -23,6 +28,23 @@
 .font-about-text {
   font-size: 25px !important;
   font-weight: 400 !important;
+}
+
+.font-social-description {
+  font-size: 25px !important;
+  font-weight: 300 !important;
+  opacity: 50%;
+}
+
+.font-social-link {
+  font-size: 25px !important;
+  font-weight: 700 !important;
+  color: #2B7629 !important;
+}
+
+.font-search {
+  font-size: 10px !important;
+  color: white !important;
 }
 
 .font-main-contact {

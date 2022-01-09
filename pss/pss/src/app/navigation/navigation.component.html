@@ -17,35 +17,39 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navmenu">
-      <ul class="navbar-nav mx-auto justify-content-center">
-        <li class="nav-item">
-          <a href="#about" class="link-item left-right" routerLink="/about">O Nas</a>
-        </li>
-        <li class="nav-item">
-          <a href="#questions" class="link-item left-right" routerLink="/socialmedia">Social Media</a>
-        </li>
-        <li class="nav-item">
-          <a href="#contact" class="link-item left-right" routerLink="/contact">Kontakt</a>
-        </li>
-      </ul>
-      <form class="d-flex" action="">
-        <div class="btn" type="submit" *ngIf="userIsAuthenticated">
-          <a class="btn btn-login" routerLink="/list">Lista</a>
-        </div>
-        <div class="btn" type="submit" *ngIf="userIsAuthenticated">
-          <a class="btn btn-login" routerLink="/create">Dodaj drużyne</a>
-        </div>
+      <ng-container *ngIf="!userIsAuthenticated; else showAuthenticated">
+        <ul class="navbar-nav mx-auto justify-content-center">
+          <li class="nav-item">
+            <a href="#about" class="link-item left-right" routerLink="/about">O Nas</a>
+          </li>
+          <li class="nav-item">
+            <a href="#questions" class="link-item left-right" routerLink="/socialmedia">Social Media</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="link-item left-right" routerLink="/contact">Kontakt</a>
+          </li>
+        </ul>
         <button class="btn" type="submit" *ngIf="!userIsAuthenticated">
           <a class="btn btn-login" routerLink="/auth/login" >Zaloguj</a>
         </button>
         <button class="btn" type="submit" *ngIf="!userIsAuthenticated">
           <a class="btn btn-register" routerLink="/auth/register">Rejestracja</a>
         </button>
-        <button class="btn" type="submit" *ngIf="userIsAuthenticated" (click)="onLogout()">
-          <span class="btn btn-login">Wyloguj</span>
-        </button>
-
-      </form>
+      </ng-container>
+      <ng-template #showAuthenticated>
+          <div class="messages-icon"></div>
+          <div class="myacc-icon"></div>
+          <!-- <div class="mx-auto"> -->
+            <button class="btn" type="submit" (click)="onLogout()">
+              <span class="btn btn-logout">Wyloguj</span>
+            </button>
+          <!-- </div> -->
+          <div class="mx-auto">
+            <div class="btn btn-search">
+              <span class="btn font-search">Szukaj zawodnika lub drużyny</span>
+            </div>
+          </div>
+      </ng-template>
     </div>
   </div>
 </nav>
