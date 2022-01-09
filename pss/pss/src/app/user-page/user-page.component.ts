@@ -10,7 +10,19 @@ import {UserService} from "../services/user.service";
 })
 export class UserPageComponent implements OnInit {
 
-  user: User | undefined;
+  user: User = {
+    id_user: 0,
+    name: "",
+    email: "",
+    password: "",
+    city: "",
+    discipline: "",
+    team: "",
+    age: 0,
+    weight: 0,
+    height: 0,
+    img: ""
+  };
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
