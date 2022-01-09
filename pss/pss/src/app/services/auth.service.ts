@@ -1,10 +1,18 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+
+// rxjs 
 import { Subject } from "rxjs";
 
-import { environment } from "../environments/environment";
-import { AuthData } from "./auth-data.model";
+// environment 
+import { environment } from "../../environments/environment";
+
+// models
+import { AuthData } from "../models/auth-data.model";
+
+//3rd
+import { NgxSpinnerService } from "ngx-spinner";
 
 const BACKEND_URL = environment.apiUrl + "/user/";
 
@@ -16,7 +24,7 @@ export class AuthService {
   private userId: string;
   private authStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private spinnerService: NgxSpinnerService) {}
 
   getToken() {
     return this.token;
@@ -36,9 +44,9 @@ export class AuthService {
 
   createUser(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
-    this.http.post(BACKEND_URL + "/register", authData).subscribe(
+    this.http.post(BACKEND_URL + "register", authData).subscribe(
       () => {
-        this.router.navigate(["/"]);
+        this.router.navigate(["homepage"]);
       },
       error => {
         this.authStatusListener.next(false);
@@ -50,7 +58,7 @@ export class AuthService {
     const authData: AuthData = { email: email, password: password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        BACKEND_URL + "/login",
+        BACKEND_URL + "login",
         authData
       )
       .subscribe(
@@ -69,7 +77,7 @@ export class AuthService {
             );
             console.log(expirationDate);
             this.saveAuthData(token, expirationDate, this.userId);
-            this.router.navigate(["/"]);
+            this.router.navigate(["homepage"]);
           }
         },
         error => {
@@ -101,7 +109,17 @@ export class AuthService {
     this.userId = null;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
-    this.router.navigate(["/"]);
+
+    this.spinnerService.show(undefined, {
+      type: 'timer',
+      bdColor: 'rgba(255,255,255,0.8)',
+      color: '#1E90FF',
+      size: 'large',
+    });
+    setTimeout(() => {
+      this.spinnerService.hide();
+      this.router.navigate(["/"]);
+    }, 2000);
   }
 
   private setAuthTimer(duration: number) {

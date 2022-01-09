@@ -1,0 +1,30 @@
+.main-container {
+  height: 896px !important;
+  background: url("../../assets/img/basketball-pitch.jpg") no-repeat top;
+  opacity: 80%;
+
+  .main-content-page {
+    .main-page-title {
+      opacity: 70%;
+      margin-top: 300px !important;
+    }
+
+    .main-button {
+      width: 321px !important;
+      height: 63px !important;
+      background: #294D76;
+      border-radius: 31.5px;
+
+      &-text {
+          font-size: 25px !important;
+          color: white;
+          font-weight: 400 !important;
+          letter-spacing: 5px !important;
+      }
+
+      &:hover {
+        background: #152F4E;
+      }
+    }
+  }
+}

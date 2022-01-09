@@ -9,7 +9,7 @@ import {
 import { Component, OnInit} from '@angular/core';
 
 //lukasz
-import { AuthService } from "./auth.service";
+import { AuthService } from "./services/auth.service";
 
 
 @Component({
