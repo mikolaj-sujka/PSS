@@ -57,19 +57,7 @@ server.listen(port);
 
 /////////////////////////////////////////////////////// do wywalenia ///////////////////////////
 
-app.get("/api/v1/users", (req, res, next) => {
-  let sql = "select * from user"
-  let params = []
-  db.all(sql, params, (err, rows) => {
-    if (err) {
-      res.status(400).json({"error": err.message});
-      return;
-    }
-    res.json(rows)
-  });
-});
-
-app.get("/api/v1/user/:name&:city&:discipline", (req, res, next) => {
+app.get("/api/v1/user/search/:name&:city&:discipline", (req, res, next) => {
   const name = req.params.name
   const city = req.params.city
   const discipline = req.params.discipline
@@ -109,6 +97,19 @@ app.get("/api/v1/user/:name&:city&:discipline", (req, res, next) => {
       return;
     }
     res.json(rows)
+  });
+});
+
+app.get("/api/v1/user/:id", (req, res, next) => {
+  const id = req.params.id
+
+  let sql = "select * from user where user.id_user = " + id + ";";
+  db.get(sql, [], (err, row) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+      return;
+    }
+    res.json(row)
   });
 });
 

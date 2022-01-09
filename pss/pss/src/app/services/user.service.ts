@@ -10,12 +10,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]>{
-    return this.http.get<User[]>("/api/v1/users");
+  findUsers(name: string, city: string, discipline: string): Observable<User[]>{
+    return this.http.get<User[]>("/api/v1/user/search/" + name + "&" + city + "&" + discipline);
   }
 
-  findUsers(name: string, city: string, discipline: string): Observable<User[]>{
-    return this.http.get<User[]>("/api/v1/user/" + name + "&" + city + "&" + discipline);
+  getUserById(id: number): Observable<User>{
+    return this.http.get<User>("/api/v1/user/" + id);
   }
 
 }
