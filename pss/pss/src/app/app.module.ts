@@ -34,6 +34,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { MainPageComponent } from './main-page/main-page.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -57,7 +58,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PostListComponent,
     ErrorComponent,
     SearchUsersTeamsComponent,
-    MainPageComponent
+    MainPageComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

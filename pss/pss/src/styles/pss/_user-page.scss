@@ -1,0 +1,98 @@
+.user-container{
+
+
+  display: inline-flex;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 25%;
+
+  .avatar-img{
+    width: 422px;
+    height: 422px;
+  }
+
+  .line1{
+    height: 422px;
+    border: 3px solid #1E90FF;
+    margin-left: 40px;
+  }
+
+  .line2{
+    height: 55px;
+    border: 3px solid #000000;
+    margin-left: 10px;
+  }
+
+  .user-detail-container {
+    display: flex;
+
+    .user-details {
+
+      margin-left: 15px;
+      display: block;
+
+      .user-title {
+
+        display: inline-flex;
+
+        .user-name {
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 35px;
+          line-height: 41px;
+          margin-left: 10px;
+          padding: 10px
+        }
+
+        .user-number {
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 900;
+          font-size: 50px;
+          line-height: 59px;
+        }
+      }
+
+      .user-data {
+        white-space: pre;
+        display: inline-flex;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 20px;
+        line-height: 23px;
+        padding: 10px;
+        color: #000000;
+        width: 100px;
+
+        .data-font {
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 25px;
+          line-height: 29px;
+          color: #000000;
+          margin-left: 50px;
+        }
+      }
+
+    }
+
+    .team-font{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 25px;
+      line-height: 29px;
+      text-align: center;
+      margin-top: 20%;
+    }
+
+    .team-img {
+      width: 283px;
+      height: 282px;
+    }
+  }
+
+}

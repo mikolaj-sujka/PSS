@@ -11,6 +11,7 @@ import { AboutUsComponent } from './subpage/about-us/about-us.component';
 import { ContactComponent } from './subpage/contact/contact.component';
 import { SocialMediaComponent } from './subpage/social-media/social-media.component';
 import {SearchUsersTeamsComponent} from "./search-users-teams/search-users-teams.component";
+import {UserPageComponent} from "./user-page/user-page.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent,  data: { title: 'mainPage', depth: 1 }},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "create", component: PostCreateComponent,data: { title: 'createPage', depth: 2, bodyClass: 'create'}, canActivate: [AuthGuard] },
   { path: "list", component: PostListComponent,data: { title: 'listPage', depth: 2, bodyClass: 'list'}, canActivate: [AuthGuard] },
   { path: "search-users-teams", component: SearchUsersTeamsComponent, data: {title: 'searchUsersTeams', depth: 2, bodyClass: 'searchUserTeams'}},
+  { path: "user-page/:id", component: UserPageComponent, data: {title: 'userPage', depth: 2, bodyClass: 'userPage'}},
   { path: "auth", loadChildren: ()=> import("./modules/auth.module").then(m => m.AuthModule) }
 ];
 
