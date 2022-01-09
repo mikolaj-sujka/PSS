@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
@@ -40,6 +41,12 @@ export function HttpLoaderFactory(http: HttpClient) {
   ]);
 }
 
+import { PostCreateComponent } from "../app/posts/post-create/post-create.component";
+import { PostListComponent } from "../app/posts/post-list/post-list.component";
+import { ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { SearchUserComponent } from './search-user/search-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,12 +60,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     PostCreateComponent,
     PostListComponent,
     ErrorComponent,
+    SearchUserComponent
+    ErrorComponent,
     MainPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     AngularMaterialModule,
     CommonModule,
