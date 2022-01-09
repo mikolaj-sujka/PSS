@@ -3,9 +3,15 @@
   <div class="search-container pt-5 pb-5">
     <div class="background-search"></div>
     <h1 class="form-title">Wyszukiwanie</h1>
+    <div class="radio-buttons">
+      <input type="radio" value="user" name="search-option" id="user-radio" #radioBox1 (input)="changeNames(radioBox1.value)" checked>
+      <label for="user-radio" class="search-label">Zawodnik</label>
+      <input type="radio" value="team" name="search-option" id="team-radio" #radioBox2 (input)="changeNames(radioBox2.value)">
+      <label for="team-radio" class="search-label">Drużyna</label>
+    </div>
     <div class="form-search">
       <form #searchForm="ngForm" (ngSubmit)="searchUser(searchForm)">
-        <label for="name" class="search-label">Imie/Nazwisko: </label>
+        <label for="name" class="search-label">{{tableNames.col2}}: </label>
         <input type="text" id="name" name="name" ngModel/><br>
         <label for="city" class="search-label">Miasto: </label>
         <input type="text" id="city" name="city" ngModel/><br>
@@ -23,20 +29,26 @@
   </div>
 
   <div class="result-container pt-5 pb-5">
-    <h1 class="form-title">Wyniki wyszukiwania: {{users.length}}</h1>
+    <h1 class="form-title">Wyniki wyszukiwania: {{searchPositions}}</h1>
     <div class="result-table">
       <table>
         <tr>
-          <th>Avatar</th>
-          <th>Imie nawzisko</th>
-          <th>Drużyna</th>
-          <th>Miasto</th>
+          <th>{{tableNames.col1}}</th>
+          <th>{{tableNames.col2}}</th>
+          <th>{{tableNames.col3}}</th>
+          <th>{{tableNames.col4}}</th>
         </tr>
         <tr *ngFor="let user of users">
           <td><img src="../../../assets/img/players-football.jpg" width="70px" height="70px"/></td>
           <td>{{user.name}}</td>
-          <td>{{user.team}}</td>
           <td>{{user.city}}</td>
+          <td>{{user.team}}</td>
+        </tr>
+        <tr *ngFor="let team of teams">
+          <td><img src="../../../assets/img/players-football.jpg" width="70px" height="70px"/></td>
+          <td>{{team.name}}</td>
+          <td>{{team.city}}</td>
+          <td>{{team.discipline}}</td>
         </tr>
       </table>
     </div>
