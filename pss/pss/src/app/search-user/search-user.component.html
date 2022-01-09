@@ -2,7 +2,7 @@
 <div>
   <div class="search-container pt-5 pb-5">
     <div class="background-search"></div>
-    <h1 class="form-title">Wyszukiwanie zawodników</h1>
+    <h1 class="form-title">Wyszukiwanie</h1>
     <div class="form-search">
       <form #searchForm="ngForm" (ngSubmit)="searchUser(searchForm)">
         <label for="name" class="search-label">Imie/Nazwisko: </label>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="result-container pt-5 pb-5">
-    <h1 class="form-title">Wyniki wyszukiwania: 1</h1>
+    <h1 class="form-title">Wyniki wyszukiwania: {{users.length}}</h1>
     <div class="result-table">
       <table>
         <tr>

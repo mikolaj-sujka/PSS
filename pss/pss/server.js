@@ -111,3 +111,46 @@ app.get("/api/v1/user/:name&:city&:discipline", (req, res, next) => {
     res.json(rows)
   });
 });
+
+app.get("/api/v1/team/:name&:city&:discipline", (req, res, next) => {
+  const name = req.params.name
+  const city = req.params.city
+  const discipline = req.params.discipline
+
+  let flag = 0
+  let search = "where "
+  if (name != "any") {
+    search += `team.name LIKE '%` + name + `%'`;
+    flag = 1
+  }
+  if (city != "any") {
+    if (flag == 1)
+      search += ` and team.city = "` + city + `"`;
+    else {
+      search += `team.city = "` + city + `"`;
+      flag = 1
+    }
+  }
+  if (discipline != "any") {
+    if (flag == 1)
+      search += ` and team.discipline = "` + discipline + `"`;
+    else {
+      search += `team.discipline = "` + discipline + `"`;
+      flag = 1
+    }
+  }
+  let sql = "";
+  if (flag == 0)
+    sql = "select * from team;"
+  else
+    sql = "select * from team " + search + ";"
+
+  let params = []
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+      return;
+    }
+    res.json(rows)
+  });
+});
