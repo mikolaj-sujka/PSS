@@ -31,6 +31,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { MainPageComponent } from './main-page/main-page.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -51,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactComponent,
     PostCreateComponent,
     PostListComponent,
-    ErrorComponent
+    ErrorComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
