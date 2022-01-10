@@ -39,14 +39,18 @@ export class SearchUsersTeamsComponent implements OnInit {
       city = "any"
 
     if(this.radioButtonValue == "user") {
-      this.userService.findUsers(name, city, discipline).subscribe(users => this.users = users);
+      this.userService.findUsers(name, city, discipline).subscribe(users => {
+        this.users = users
+        this.searchPositions = this.users.length
+      });
       this.teams = []
-      this.searchPositions = this.users.length //nie zawsze odświeża
     }
     else{
-      this.teamService.findTeam(name, city, discipline).subscribe(teams => this.teams = teams);
+      this.teamService.findTeam(name, city, discipline).subscribe(teams => {
+        this.teams = teams
+        this.searchPositions = this.teams.length
+      });
       this.users = []
-      this.searchPositions = this.teams.length
     }
   }
 
