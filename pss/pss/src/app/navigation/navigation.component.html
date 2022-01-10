@@ -5,7 +5,7 @@
       src="../../assets/img/running.png"
       alt=""
     />
-    <a routerLink="/" class="navbar-brand navbar-item-logo">PSS</a>
+    <a [routerLink]="!userIsAuthenticated ? ['/'] : ['/homepage']" class="navbar-brand navbar-item-logo">PSS</a>
 
     <button
       class="navbar-toggler"
@@ -44,11 +44,10 @@
               <span class="btn btn-logout">Wyloguj</span>
             </button>
           <!-- </div> -->
-          <div class="mx-auto">
             <div class="btn btn-search">
               <a class="btn font-search" routerLink="/search-users-teams">Szukaj zawodnika lub drużyny</a>
             </div>
-          </div>
+            <div class="search-icon"></div>
       </ng-template>
     </div>
   </div>
