@@ -113,7 +113,7 @@ app.get("/api/v1/user/:id", (req, res, next) => {
   });
 });
 
-app.get("/api/v1/team/:name&:city&:discipline", (req, res, next) => {
+app.get("/api/v1/team/find/:name&:city&:discipline", (req, res, next) => {
   const name = req.params.name
   const city = req.params.city
   const discipline = req.params.discipline
@@ -155,3 +155,18 @@ app.get("/api/v1/team/:name&:city&:discipline", (req, res, next) => {
     res.json(rows)
   });
 });
+
+app.get("/api/v1/team/:id", (req, res, next) => {
+  const id = req.params.id
+
+  let sql = "select * from team where team.id = " + id + ";"
+
+  db.get(sql, [], (err, row) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+      return;
+    }
+    res.json(row)
+  });
+});
+

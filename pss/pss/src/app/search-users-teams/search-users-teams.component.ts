@@ -40,6 +40,7 @@ export class SearchUsersTeamsComponent implements OnInit {
     if(discipline == "")
       discipline = "any"
 
+    console.log(this.radioButtonValue)
     if(this.radioButtonValue == "user") {
       this.userService.findUsers(name, city, discipline).subscribe(users => this.users = users);
       this.teams = []
@@ -54,6 +55,7 @@ export class SearchUsersTeamsComponent implements OnInit {
 
   changeNames(value: string) {
     if(value == "user"){
+      this.radioButtonValue = "user";
       this.tableNames = {
         col1: "avatar",
         col2: "Imie/Nazwisko",
@@ -62,6 +64,7 @@ export class SearchUsersTeamsComponent implements OnInit {
       };
     }
     else{
+      this.radioButtonValue = "team";
       this.tableNames = {
         col1: "avatar",
         col2: "Nazwa drużyny",

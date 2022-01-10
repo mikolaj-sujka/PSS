@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Team} from "../models/team.model";
+import {TeamService} from "../services/team.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-team-page',
@@ -15,9 +17,15 @@ export class TeamPageComponent implements OnInit {
     discipline: ""
   };
 
-  constructor() { }
+  constructor(private teamService: TeamService,  private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getTeam();
+  }
+
+  getTeam(): void {
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    this.teamService.getTeamById(id).subscribe(team => this.team = team);
   }
 
 }

@@ -45,8 +45,8 @@
           <td>{{user.team}}</td>
         </tr>
         <tr *ngFor="let team of teams">
-          <td><img src="../../../assets/img/players-football.jpg" width="70px" height="70px"/></td>
-          <td>{{team.name}}</td>
+          <td><a routerLink="/team-page/{{team.id}}"><img src="../../../assets/img/players-football.jpg" width="70px" height="70px"/></a></td>
+          <td><a routerLink="/team-page/{{team.id}}">{{team.name}}</a></td>
           <td>{{team.city}}</td>
           <td>{{team.discipline}}</td>
         </tr>
