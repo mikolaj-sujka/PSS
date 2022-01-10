@@ -73,6 +73,7 @@
           font-size: 25px;
           line-height: 29px;
           color: #000000;
+          max-width: 200px;
           margin-left: 50px;
         }
       }
@@ -93,6 +94,11 @@
       width: 283px;
       height: 282px;
     }
+  }
+
+  .btn-edit{
+
+    margin: 5px;
   }
 
 }

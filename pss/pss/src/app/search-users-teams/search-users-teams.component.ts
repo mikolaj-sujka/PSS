@@ -29,18 +29,15 @@ export class SearchUsersTeamsComponent implements OnInit {
   }
 
   searchUser(form: NgForm){
-    let city = form.value.city
     let name = form.value.name
+    let city = form.value.city
     let discipline = form.value.discipline
 
-    if(city == "")
-      city = "any"
     if(name == "")
       name = "any"
-    if(discipline == "")
-      discipline = "any"
+    if(city == "")
+      city = "any"
 
-    console.log(this.radioButtonValue)
     if(this.radioButtonValue == "user") {
       this.userService.findUsers(name, city, discipline).subscribe(users => this.users = users);
       this.teams = []
