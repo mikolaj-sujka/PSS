@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 <div class="user-container">
-  <img src="./assets/img/user-avatar.png" class="avatar-img "/>
+  <img src="./assets/img/user-avatar.png" class="avatar-img" alt="user avatar"/>
   <div class="line1"></div>
   <div class="user-detail-container">
     <div *ngIf="editMode == false; else editForm" class="user-details">
@@ -72,7 +72,7 @@
     </ng-template>
     <div>
       <div class="team-font">{{user.team}}</div>
-      <img src="./assets/img/default-img.png" class="team-img"/>
+      <img src="./assets/img/default-img.png" class="team-img" alt="team avatar"/>
     </div>
   </div>
 

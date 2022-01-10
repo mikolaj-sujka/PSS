@@ -39,13 +39,13 @@
           <th>{{tableNames.col4}}</th>
         </tr>
         <tr *ngFor="let user of users">
-          <td><a routerLink="/user-page/{{user.id_user}}"><img src="../../../assets/img/players-football.jpg" width="70px" height="70px"/></a></td>
+          <td><a routerLink="/user-page/{{user.id_user}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="user avatar"/></a></td>
           <td><a routerLink="/user-page/{{user.id_user}}">{{user.name}}</a></td>
           <td>{{user.city}}</td>
           <td>{{user.team}}</td>
         </tr>
         <tr *ngFor="let team of teams">
-          <td><a routerLink="/team-page/{{team.id}}"><img src="../../../assets/img/players-football.jpg" width="70px" height="70px"/></a></td>
+          <td><a routerLink="/team-page/{{team.id}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="team avatar"/></a></td>
           <td><a routerLink="/team-page/{{team.id}}">{{team.name}}</a></td>
           <td>{{team.city}}</td>
           <td>{{team.discipline}}</td>
