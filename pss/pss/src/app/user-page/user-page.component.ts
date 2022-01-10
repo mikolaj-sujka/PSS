@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../models/user.model";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../services/user.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-user-page',
@@ -24,6 +25,8 @@ export class UserPageComponent implements OnInit {
     img: ""
   };
 
+  editMode = false;
+
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -33,6 +36,17 @@ export class UserPageComponent implements OnInit {
   getUser(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.userService.getUserById(id).subscribe(user => this.user = user);
+  }
+
+  buttonEditChangeVal(): void {
+    this.editMode = !this.editMode
+  }
+
+  updateUserData(form: NgForm): void {
+    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    this.userService.updateUserData(id, form);
+    this.buttonEditChangeVal();
+    this.getUser();
   }
 
 }

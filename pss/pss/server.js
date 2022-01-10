@@ -113,6 +113,43 @@ app.get("/api/v1/user/:id", (req, res, next) => {
   });
 });
 
+app.patch("/api/v1/user/:id", (req, res, next) => {
+  var data = {
+    name: req.body.name,
+    city: req.body.city,
+    discipline: req.body.discipline,
+    age: req.body.age,
+    weight: req.body.weight,
+    height: req.body.height
+  }
+
+
+  db.run(
+    `UPDATE user set
+    name = COALESCE(?, name),
+    city = COALESCE(?, city),
+    discipline = COALESCE(?, discipline),
+    age = COALESCE(?, age),
+    weight = COALESCE(?, weight),
+    height = COALESCE(?, height)
+    WHERE id_user = ?`,
+    [data.name, data.city, data.discipline, data.age, data.weight, data.height, req.params.id],
+    function (err, result){
+      if (err){
+        res.status(400).json({"error": res.message})
+        console.log(err)
+        return;
+      }
+      res.json({
+        message: "success",
+        data: data,
+        changes: this.changes
+      })
+  });
+});
+
+
+
 app.get("/api/v1/team/find/:name&:city&:discipline", (req, res, next) => {
   const name = req.params.name
   const city = req.params.city

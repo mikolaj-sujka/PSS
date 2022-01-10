@@ -3,7 +3,7 @@
   <img src="./assets/img/user-avatar.png" class="avatar-img "/>
   <div class="line1"></div>
   <div class="user-detail-container">
-    <div class="user-details">
+    <div *ngIf="editMode == false; else editForm" class="user-details">
       <div class="user-title">
         <div class="user-number">99</div>
         <div class="line2"></div>
@@ -30,7 +30,46 @@
         <div class="data-font">{{user.discipline}}</div>
       </div>
       <br>
+      <button *ngIf="user.id_user == 1" class="btn btn-outline-primary btn-edit" (click)="buttonEditChangeVal()">
+        Edytuj
+      </button>
     </div>
+    <ng-template #editForm>
+      <form #editUserForm="ngForm" (ngSubmit)="updateUserData(editUserForm)">
+        <div class="user-details">
+          <div class="user-title">
+            <div class="user-number">99</div>
+            <div class="line2"></div>
+            <input class="user-name" type="text" name="name" id="name" ngModel value="{{user.name}}">
+          </div>
+          <br>
+          <div class="user-data">miasto
+            <input class="data-font" type="text" name="city" id="city" ngModel value="{{user.city}}">
+          </div>
+          <br>
+          <div class="user-data">wiek
+            <input class="data-font" type="number" name="age" id="age" ngModel value="{{user.age}}">
+          </div>
+          <br>
+          <div class="user-data">waga
+            <input class="data-font" type="number" name="weight" id="weight" ngModel value="{{user.weight}}">
+          </div>
+          <br>
+          <div class="user-data">wzrost
+            <input class="data-font" type="number" name="height" id="height" ngModel value="{{user.height}}">
+          </div>
+          <br>
+          <div class="user-data">dyscyplina
+            <input class="data-font" type="text" name="discipline" id="discipline" ngModel value="{{user.discipline}}">
+          </div>
+          <br>
+          <button class="btn btn-outline-primary btn-edit" type="submit">Zmień</button>
+          <button class="btn btn-outline-primary btn-edit" (click)="buttonEditChangeVal()">
+            Anuluj
+          </button>
+        </div>
+      </form>
+    </ng-template>
     <div>
       <div class="team-font">{{user.team}}</div>
       <img src="./assets/img/default-img.png" class="team-img"/>
