@@ -57,19 +57,7 @@ server.listen(port);
 
 /////////////////////////////////////////////////////// do wywalenia ///////////////////////////
 
-app.get("/api/v1/users", (req, res, next) => {
-  let sql = "select * from user"
-  let params = []
-  db.all(sql, params, (err, rows) => {
-    if (err) {
-      res.status(400).json({"error": err.message});
-      return;
-    }
-    res.json(rows)
-  });
-});
-
-app.get("/api/v1/user/:name&:city&:discipline", (req, res, next) => {
+app.get("/api/v1/user/search/:name&:city&:discipline", (req, res, next) => {
   const name = req.params.name
   const city = req.params.city
   const discipline = req.params.discipline
@@ -111,3 +99,74 @@ app.get("/api/v1/user/:name&:city&:discipline", (req, res, next) => {
     res.json(rows)
   });
 });
+
+app.get("/api/v1/user/:id", (req, res, next) => {
+  const id = req.params.id
+
+  let sql = "select * from user where user.id_user = " + id + ";";
+  db.get(sql, [], (err, row) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+      return;
+    }
+    res.json(row)
+  });
+});
+
+app.get("/api/v1/team/find/:name&:city&:discipline", (req, res, next) => {
+  const name = req.params.name
+  const city = req.params.city
+  const discipline = req.params.discipline
+
+  let flag = 0
+  let search = "where "
+  if (name != "any") {
+    search += `team.name LIKE '%` + name + `%'`;
+    flag = 1
+  }
+  if (city != "any") {
+    if (flag == 1)
+      search += ` and team.city = "` + city + `"`;
+    else {
+      search += `team.city = "` + city + `"`;
+      flag = 1
+    }
+  }
+  if (discipline != "any") {
+    if (flag == 1)
+      search += ` and team.discipline = "` + discipline + `"`;
+    else {
+      search += `team.discipline = "` + discipline + `"`;
+      flag = 1
+    }
+  }
+  let sql = "";
+  if (flag == 0)
+    sql = "select * from team;"
+  else
+    sql = "select * from team " + search + ";"
+
+  let params = []
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+      return;
+    }
+    res.json(rows)
+  });
+});
+
+app.get("/api/v1/team/:id", (req, res, next) => {
+  const id = req.params.id
+
+  let sql = "select * from team where team.id = " + id + ";"
+
+  db.get(sql, [], (err, row) => {
+    if (err) {
+      res.status(400).json({"error": err.message});
+      return;
+    }
+    res.json(row)
+  });
+});
+

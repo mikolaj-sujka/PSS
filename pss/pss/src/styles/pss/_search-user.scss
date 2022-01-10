@@ -3,7 +3,7 @@
   .background-search {
     background-color: #1E90FF !important;
     width: 100%;
-    height: 400px;
+    height: 450px;
     z-index: -1;
     position: absolute;
     top: 45px;
@@ -11,8 +11,12 @@
 
   @media (max-width: 1060px) {
     .background-search{
-      height: 500px;
+      height: 550px;
     }
+  }
+
+  .radio-buttons{
+    text-align: center;
   }
 
   .form-title{

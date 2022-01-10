@@ -37,6 +37,27 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
           db.run(insert, ["Mateo Domino", "user4@example.com", md5("abc5"), "Lublin", "Piłka nożna", "abc", 25, 82, 175, ""])
         }
       });
+
+    db.run(
+      `CREATE TABLE team(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name text,
+            city text,
+            discipline text
+            )`,
+      (err) => {
+        if (err) {
+          //table already created
+        } else {
+          //inserting data
+          let insert = 'INSERT INTO team(name, city, discipline) VALUES (?, ?, ?)'
+          db.run(insert, ["ABC Piłka", "Lublin", "Piłka nożna"])
+          db.run(insert, ["ABC Piłka 1", "Lublin", "Piłka nożna"])
+          db.run(insert, ["ABC Piłka 2", "Kraków", "Piłka nożna"])
+          db.run(insert, ["ABC Piłka 3", "Lublin", "Piłka nożna"])
+          db.run(insert, ["ABC Piłka 4", "Lublin", "Siatkówka"])
+        }
+      });
   }
 });
 
