@@ -30,11 +30,12 @@ export class UserPageComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getUser();
+    this.route.params.subscribe(routeParams => {
+      this.getUser(routeParams.id);
+    });
   }
 
-  getUser(): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+  getUser(id: number): void {
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
@@ -46,7 +47,7 @@ export class UserPageComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.userService.updateUserData(id, form);
     this.buttonEditChangeVal();
-    this.getUser();
+    this.getUser(1);
   }
 
 }

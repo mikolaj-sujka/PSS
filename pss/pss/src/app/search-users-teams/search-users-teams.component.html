@@ -16,11 +16,11 @@
         <label for="city" class="search-label">Miasto: </label>
         <input type="text" id="city" name="city" ngModel/><br>
         <label for="discipline" class="search-label">Dyscyplina: </label>
-        <select id="discipline" name="discipline" ngModel>
+        <select id="discipline" name="discipline" ngModel="any">
           <option value="soccer">Piłka nożna</option>
           <option value="volleyball">Siatkówka</option>
           <option value="basketball">Koszykówka</option>
-          <option value="any" selected>Dowolne</option>
+          <option value="any">Dowolne</option>
         </select><br>
         <button class="btn btn-primary" type="submit">Wyszukaj</button>
       </form>
