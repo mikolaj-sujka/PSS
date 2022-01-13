@@ -14,7 +14,7 @@ export class TeamService {
     return this.http.get<Team[]>("/api/v1/team/find/" + name + "-" + city + "-" + discipline);
   }
 
-  getTeamById(id: number): Observable<Team>{
+  getTeamById(id: string): Observable<Team>{
     return this.http.get<Team>("/api/v1/team/" + id);
   }
 }

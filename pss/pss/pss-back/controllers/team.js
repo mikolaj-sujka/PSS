@@ -53,5 +53,20 @@ exports.findTeam = (req, res) => {
     })
 }
 
+exports.getTeam = (req, res) => {
+  Team.findById(req.params.id)
+    .then(team => {
+      res.status(200).json(
+        team
+      );
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Find Error",
+        error: error
+      })
+    })
+}
+
 
 

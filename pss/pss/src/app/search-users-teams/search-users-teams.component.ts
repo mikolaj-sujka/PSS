@@ -49,6 +49,7 @@ export class SearchUsersTeamsComponent implements OnInit {
       this.teamService.findTeam(name, city, discipline).subscribe(teams => {
         this.teams = teams
         this.searchPositions = this.teams.length
+        console.log(teams)
       });
       this.users = []
     }
