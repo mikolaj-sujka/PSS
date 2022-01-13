@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
+const teamRoutes = require("./routes/team");
 
 const app = express();
 
@@ -16,6 +17,10 @@ mongoose
   )
   .then(() => {
     console.log("Connected to database!");
+    console.log("mongodb+srv://admin:" +
+      process.env.MONGO_ATLAS_PW +
+      "@cluster0.ovwqs.mongodb.net/mean-db-first"
+    );
   })
   .catch(() => {
     console.log("Connection failed!");
@@ -40,5 +45,6 @@ app.use((req, res, next) => {
 
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/v1/team", teamRoutes);
 
 module.exports = app;

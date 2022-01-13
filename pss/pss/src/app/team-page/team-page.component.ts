@@ -11,10 +11,12 @@ import {ActivatedRoute} from "@angular/router";
 export class TeamPageComponent implements OnInit {
 
   team: Team = {
-    id: 0,
+    _id: 0,
     name: "",
     city: "",
-    discipline: ""
+    discipline: "",
+    img: "",
+    capitan: ""
   };
 
   constructor(private teamService: TeamService,  private route: ActivatedRoute) { }
