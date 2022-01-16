@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../models/user.model";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../services/user.service";
@@ -28,7 +28,8 @@ export class UserPageComponent implements OnInit {
   editMode = false;
   userId = localStorage.getItem("userId");
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
@@ -46,9 +47,19 @@ export class UserPageComponent implements OnInit {
 
   updateUserData(form: NgForm): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.userService.updateUserData(id, form, this.user.email);
+    this.userService.updateUserData(id, form, this.user.email).subscribe(
+      (val) => {
+        console.log("POST call successful value returned in body");
+      },
+      response => {
+        console.log("POST call in error", response);
+      },
+      () => {
+        console.log("The POST observable is now completed.");
+        this.getUser(this.userId);
+      });
     this.buttonEditChangeVal();
-    this.getUser(this.userId);
+
   }
 
 }

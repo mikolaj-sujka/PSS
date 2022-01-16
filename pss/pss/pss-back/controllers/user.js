@@ -61,7 +61,7 @@ exports.userLogin = (req, res, next) => {
     });
 }
 
-exports.getUser = (req, res, next) => {
+exports.getUser = (req, res) => {
   User.findById(req.params.id)
     .then(user => {
       res.status(200).json(user);
@@ -74,7 +74,7 @@ exports.getUser = (req, res, next) => {
     })
 }
 
-exports.findUser = (req, res, next) => {
+exports.findUser = (req, res) => {
   let name = req.params.name;
   let city = req.params.city;
   let discipline = req.params.discipline;
@@ -98,8 +98,7 @@ exports.findUser = (req, res, next) => {
     })
 }
 
-exports.updateUser = (req, res, next) => {
-
+exports.updateUser = (req, res) => {
   User.updateOne({email: req.body.email},
     {
       $set: {
