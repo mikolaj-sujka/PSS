@@ -22,10 +22,11 @@ export class UserService {
     return this.http.get<User>(apiUrl + id);
   }
 
-  updateUserData(id: string, form: NgForm): void{
+  updateUserData(id: string, form: NgForm, email: string): void{
 
-    this.http.patch(apiUrl + id,
+    this.http.post(apiUrl + id,
       {
+        "email": email,
         "name": form.value.name,
         "city": form.value.city,
         "discipline": form.value.discipline,

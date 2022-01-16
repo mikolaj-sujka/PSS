@@ -26,7 +26,7 @@ export class UserPageComponent implements OnInit {
   };
 
   editMode = false;
-  userId = localStorage.getItem("userId")
+  userId = localStorage.getItem("userId");
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
@@ -34,7 +34,6 @@ export class UserPageComponent implements OnInit {
     this.route.params.subscribe(routeParams => {
       this.getUser(routeParams.id);
     });
-    console.log(this.userId)
   }
 
   getUser(id: string): void {
@@ -47,7 +46,7 @@ export class UserPageComponent implements OnInit {
 
   updateUserData(form: NgForm): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.userService.updateUserData(id, form);
+    this.userService.updateUserData(id, form, this.user.email);
     this.buttonEditChangeVal();
     this.getUser(this.userId);
   }
