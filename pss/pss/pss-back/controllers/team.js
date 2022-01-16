@@ -31,11 +31,11 @@ exports.findTeam = (req, res) => {
   let city = req.params.city;
   let discipline = req.params.discipline;
 
-  if(name === "any")
+  if (name === "any")
     name = ".";
-  if(city === "any")
+  if (city === "any")
     city = ".";
-  if(discipline === "any")
+  if (discipline === "any")
     discipline = ".";
 
 
@@ -56,9 +56,7 @@ exports.findTeam = (req, res) => {
 exports.getTeam = (req, res) => {
   Team.findById(req.params.id)
     .then(team => {
-      res.status(200).json(
-        team
-      );
+      res.status(200).json(team);
     })
     .catch(error => {
       res.status(500).json({

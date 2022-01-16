@@ -11,10 +11,10 @@ export class TeamService {
   constructor(private http: HttpClient) { }
 
   findTeam(name: string, city: string, discipline: string): Observable<Team[]>{
-    return this.http.get<Team[]>("/api/v1/team/find/" + name + "-" + city + "-" + discipline);
+    return this.http.get<Team[]>("/api/team/find/" + name + "-" + city + "-" + discipline);
   }
 
   getTeamById(id: string): Observable<Team>{
-    return this.http.get<Team>("/api/v1/team/" + id);
+    return this.http.get<Team>("/api/team/" + id);
   }
 }
