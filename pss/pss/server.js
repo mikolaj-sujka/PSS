@@ -2,9 +2,6 @@ const app = require("./pss-back/app");
 const debug = require("debug")("node-angular");
 const http = require("http");
 
-
-const db = require("./database.js") //do wywalenia
-
 const normalizePort = val => {
   var port = parseInt(val, 10);
 
@@ -53,95 +50,3 @@ const server = http.createServer(app);
 server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port);
-
-
-/////////////////////////////////////////////////////// do wywalenia ///////////////////////////
-
-app.get("/api/v1/user/search/:name&:city&:discipline", (req, res, next) => {
-  const name = req.params.name
-  const city = req.params.city
-  const discipline = req.params.discipline
-
-  let flag = 0
-  let search = "where "
-  if (name != "any") {
-    search += `user.name LIKE '%` + name + `%'`;
-    flag = 1
-  }
-  if (city != "any") {
-    if (flag == 1)
-      search += ` and user.city = "` + city + `"`;
-    else {
-      search += `user.city = "` + city + `"`;
-      flag = 1
-    }
-  }
-  if (discipline != "any") {
-    if (flag == 1)
-      search += ` and user.discipline = "` + discipline + `"`;
-    else {
-      search += `user.discipline = "` + discipline + `"`;
-      flag = 1
-    }
-  }
-  let sql = "";
-  if (flag == 0)
-    sql = "select * from user;"
-  else
-    sql = "select * from user " + search + ";"
-
-  let params = []
-  db.all(sql, params, (err, rows) => {
-    if (err) {
-      res.status(400).json({"error": err.message});
-      return;
-    }
-    res.json(rows)
-  });
-});
-
-app.get("/api/v1/user/:id", (req, res, next) => {
-  const id = req.params.id
-
-  let sql = "select * from user where user.id_user = " + id + ";";
-  db.get(sql, [], (err, row) => {
-    if (err) {
-      res.status(400).json({"error": err.message});
-      return;
-    }
-    res.json(row)
-  });
-});
-
-app.patch("/api/v1/user/:id", (req, res, next) => {
-  var data = {
-    name: req.body.name,
-    city: req.body.city,
-    discipline: req.body.discipline,
-    age: req.body.age,
-    weight: req.body.weight,
-    height: req.body.height
-  }
-  db.run(
-    `UPDATE user set
-    name = COALESCE(?, name),
-    city = COALESCE(?, city),
-    discipline = COALESCE(?, discipline),
-    age = COALESCE(?, age),
-    weight = COALESCE(?, weight),
-    height = COALESCE(?, height)
-    WHERE id_user = ?`,
-    [data.name, data.city, data.discipline, data.age, data.weight, data.height, req.params.id],
-    function (err, result){
-      if (err){
-        res.status(400).json({"error": res.message})
-        console.log(err)
-        return;
-      }
-      res.json({
-        message: "success",
-        data: data,
-        changes: this.changes
-      })
-  });
-});

@@ -39,8 +39,8 @@
           <th>{{tableNames.col4}}</th>
         </tr>
         <tr *ngFor="let user of users">
-          <td><a routerLink="/user-page/{{user.id_user}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="user avatar"/></a></td>
-          <td><a routerLink="/user-page/{{user.id_user}}">{{user.name}}</a></td>
+          <td><a routerLink="/user-page/{{user._id}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="user avatar"/></a></td>
+          <td><a routerLink="/user-page/{{user._id}}">{{user.name}}</a></td>
           <td>{{user.city}}</td>
           <td>{{user.team}}</td>
         </tr>

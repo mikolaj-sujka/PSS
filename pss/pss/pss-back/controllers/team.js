@@ -1,6 +1,6 @@
 const Team = require("../models/team");
 
-exports.createTeam = (req, res) => {
+exports.createTeam = (req, res, next) => {
   const team = new Team({
     name: req.body.title,
     city: req.body.content,
@@ -26,7 +26,7 @@ exports.createTeam = (req, res) => {
     });
 };
 
-exports.findTeam = (req, res) => {
+exports.findTeam = (req, res, next) => {
   let name = req.params.name;
   let city = req.params.city;
   let discipline = req.params.discipline;
@@ -53,7 +53,7 @@ exports.findTeam = (req, res) => {
     })
 }
 
-exports.getTeam = (req, res) => {
+exports.getTeam = (req, res, next) => {
   Team.findById(req.params.id)
     .then(team => {
       res.status(200).json(team);

@@ -12,7 +12,7 @@ import {NgForm} from "@angular/forms";
 export class UserPageComponent implements OnInit {
 
   user: User = {
-    id_user: 0,
+    _id: "",
     name: "",
     email: "",
     password: "",
@@ -26,6 +26,7 @@ export class UserPageComponent implements OnInit {
   };
 
   editMode = false;
+  userId = localStorage.getItem("userId")
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
@@ -33,9 +34,10 @@ export class UserPageComponent implements OnInit {
     this.route.params.subscribe(routeParams => {
       this.getUser(routeParams.id);
     });
+    console.log(this.userId)
   }
 
-  getUser(id: number): void {
+  getUser(id: string): void {
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
@@ -44,10 +46,10 @@ export class UserPageComponent implements OnInit {
   }
 
   updateUserData(form: NgForm): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    const id = this.route.snapshot.paramMap.get('id');
     this.userService.updateUserData(id, form);
     this.buttonEditChangeVal();
-    this.getUser(1);
+    this.getUser(this.userId);
   }
 
 }

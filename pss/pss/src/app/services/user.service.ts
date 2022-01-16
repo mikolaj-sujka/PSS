@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs";
 import {User} from "../models/user.model";
 import {NgForm} from "@angular/forms";
+import {environment} from "../../environments/environment";
+
+const apiUrl = environment.apiUrl + "/user/"
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +15,16 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   findUsers(name: string, city: string, discipline: string): Observable<User[]>{
-    return this.http.get<User[]>("/api/v1/user/search/" + name + "&" + city + "&" + discipline);
+    return this.http.get<User[]>(apiUrl + "find/" + name + "-" + city + "-" + discipline);
   }
 
-  getUserById(id: number): Observable<User>{
-    return this.http.get<User>("/api/v1/user/" + id);
+  getUserById(id: string): Observable<User>{
+    return this.http.get<User>(apiUrl + id);
   }
 
-  updateUserData(id: number, form: NgForm): void{
+  updateUserData(id: string, form: NgForm): void{
 
-    this.http.patch("/api/v1/user/" + id,
+    this.http.patch(apiUrl + id,
       {
         "name": form.value.name,
         "city": form.value.city,
