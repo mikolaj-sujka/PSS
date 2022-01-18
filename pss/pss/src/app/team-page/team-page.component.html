@@ -5,20 +5,32 @@
   <div class="user-detail-container">
     <div class="user-details">
       <div class="user-title">
-        <div class="user-number">{{team.id}}</div>
-        <div class="line2"></div>
+        <h1>Strona Drużyny</h1>
         <div class="user-name">{{team.name}}</div>
       </div>
       <br>
-      <div class="user-data">miasto
+      <div class="user-data">miasto:
         <div class="data-font">{{team.city}}</div>
       </div>
       <br>
-      <div class="user-data">dyscyplina
+      <div class="user-data">dyscyplina:
         <div class="data-font">{{team.discipline}}</div>
+      </div>
+      <br>
+      <div class="user-data">kapitan:
+        <div class="data-font">{{team.capitan}}</div>
       </div>
       <br>
     </div>
   </div>
+</div>
+<div class="team-list-container">
+  <mat-list>
+    <h3 class="team-list-header">Skład zespołu</h3>
+    <mat-list-item *ngFor="let user of team.users; last as last">
+      <a mat-line routerLink="/user-page/{{user.id_user}}">{{user.name}}</a>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    </mat-list-item>
+  </mat-list>
 </div>
 <app-footer></app-footer>
