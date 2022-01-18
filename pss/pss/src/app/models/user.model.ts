@@ -10,4 +10,5 @@ export interface User {
   weight: number;
   height: number;
   img: string;
+  role: string;
 }

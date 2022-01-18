@@ -7,7 +7,8 @@ exports.createUser = (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then(hash => {
     const user = new User({
       email: req.body.email,
-      password: hash
+      password: hash,
+      role: "user"
     });
     user
       .save()
@@ -51,7 +52,8 @@ exports.userLogin = (req, res, next) => {
       res.status(200).json({
         token: token,
         expiresIn: 3600,
-        userId: fetchedUser._id
+        userId: fetchedUser._id,
+        role: fetchedUser.role
       });
     })
     .catch(err => {

@@ -22,7 +22,8 @@ export class UserPageComponent implements OnInit {
     age: 0,
     weight: 0,
     height: 0,
-    img: ""
+    img: "",
+    role: ""
   };
 
   editMode = false;

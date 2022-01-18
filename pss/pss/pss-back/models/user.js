@@ -12,6 +12,7 @@ const userSchema = mongoose.Schema({
   weight: {type: Number},
   height: {type: Number},
   img: {type: String},
+  role: {type: String}
 });
 
 userSchema.plugin(uniqueValidator);
