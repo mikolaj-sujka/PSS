@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Team} from "../models/team.model";
 import {TeamService} from "../services/team.service";
 import {ActivatedRoute} from "@angular/router";
 import {NgForm} from "@angular/forms";
+import {UserService} from "../services/user.service";
+import {User} from "../models/user.model";
 
 @Component({
   selector: 'app-team-page',
@@ -22,9 +24,12 @@ export class TeamPageComponent implements OnInit {
   };
 
   editMode = false;
+  changePlayers = false;
   userId = localStorage.getItem("userId");
+  specialUsers: User[];
 
-  constructor(private teamService: TeamService,  private route: ActivatedRoute) { }
+  constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService) {
+  }
 
   ngOnInit(): void {
     this.getTeam();
@@ -32,23 +37,44 @@ export class TeamPageComponent implements OnInit {
 
   getTeam(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if(id == "captain"){
+    if (id == "captain") {
       this.team = this.teamService.getSpecialTeam();
-    }
-    else {
+    } else {
       this.teamService.getTeamById(id).subscribe(team => this.team = team);
     }
   }
 
   buttonEditChangeVal(): void {
-    this.editMode = !this.editMode
+    this.editMode = !this.editMode;
   }
 
-  updateSpecialTeam(form: NgForm): void{
-    console.log("Im here")
+  buttonChangePlayers() {
+    this.changePlayers = !this.changePlayers;
+  }
+
+  updateSpecialTeam(form: NgForm): void {
     this.teamService.updateSpecialTeam(form);
     this.team = this.teamService.getSpecialTeam();
     this.buttonEditChangeVal();
   }
 
+
+  findUsers(editTeamForm: NgForm) {
+    this.specialUsers = this.userService.getSpecialUsers();
+  }
+
+  addPlayer(user: User) {
+    const index: number = this.specialUsers.indexOf(user);
+    if (index !== -1) {
+      this.specialUsers.splice(index, 1);
+    }
+    this.teamService.addSpecialPlayer(user);
+    this.team = this.teamService.getSpecialTeam();
+  }
+
+  deletePlayer(user: User) {
+    const index: number = this.team.users.indexOf(user);
+    this.teamService.deleteSpecialPlayer(index);
+    this.team = this.teamService.getSpecialTeam();
+  }
 }

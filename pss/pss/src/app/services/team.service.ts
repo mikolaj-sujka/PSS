@@ -50,5 +50,19 @@ export class TeamService {
     team.discipline = form.value.discipline;
     localStorage.setItem("SpecialTeam", JSON.stringify(team));
   }
+
+  addSpecialPlayer(user: User) {
+    let team = JSON.parse(localStorage.getItem('SpecialTeam'));
+    team.users.push(user);
+    localStorage.setItem("SpecialTeam", JSON.stringify(team));
+  }
+
+  deleteSpecialPlayer(index: number){
+    let team = JSON.parse(localStorage.getItem('SpecialTeam'));
+    if (index !== -1) {
+      team.users.splice(index, 1);
+    }
+    localStorage.setItem("SpecialTeam", JSON.stringify(team));
+  }
 }
 
