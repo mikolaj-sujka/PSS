@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
-// rxjs 
+// rxjs
 import { Subject } from "rxjs";
 
-// environment 
+// environment
 import { environment } from "../../environments/environment";
 
 // models
@@ -22,6 +22,7 @@ export class AuthService {
   private token: string;
   private tokenTimer: any;
   private userId: string;
+  private role: string;
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router, private spinnerService: NgxSpinnerService) {}
@@ -57,7 +58,8 @@ export class AuthService {
   login(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
     this.http
-      .post<{ token: string; expiresIn: number; userId: string }>(
+      .post<{
+        token: string; expiresIn: number; userId: string; role: string}>(
         BACKEND_URL + "login",
         authData
       )
@@ -70,13 +72,14 @@ export class AuthService {
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
             this.userId = response.userId;
+            this.role = response.role;
             this.authStatusListener.next(true);
             const now = new Date();
             const expirationDate = new Date(
               now.getTime() + expiresInDuration * 1000
             );
             console.log(expirationDate);
-            this.saveAuthData(token, expirationDate, this.userId);
+            this.saveAuthData(token, expirationDate, this.userId, this.role);
             this.router.navigate(["homepage"]);
           }
         },
@@ -129,10 +132,11 @@ export class AuthService {
     }, duration * 1000);
   }
 
-  private saveAuthData(token: string, expirationDate: Date, userId: string) {
+  private saveAuthData(token: string, expirationDate: Date, userId: string, role: string) {
     localStorage.setItem("token", token);
     localStorage.setItem("expiration", expirationDate.toISOString());
     localStorage.setItem("userId", userId);
+    localStorage.setItem("role", role);
   }
 
   private clearAuthData() {

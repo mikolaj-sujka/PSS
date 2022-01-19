@@ -11,10 +11,12 @@ import {ActivatedRoute} from "@angular/router";
 export class TeamPageComponent implements OnInit {
 
   team: Team = {
-    id: 0,
+    _id: 0,
     name: "",
     city: "",
-    discipline: ""
+    discipline: "",
+    img: "",
+    capitan: ""
   };
 
   constructor(private teamService: TeamService,  private route: ActivatedRoute) { }
@@ -24,7 +26,7 @@ export class TeamPageComponent implements OnInit {
   }
 
   getTeam(): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
+    const id = this.route.snapshot.paramMap.get('id');
     this.teamService.getTeamById(id).subscribe(team => this.team = team);
   }
 
