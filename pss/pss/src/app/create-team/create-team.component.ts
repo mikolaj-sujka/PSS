@@ -24,7 +24,7 @@ export class CreateTeamComponent implements OnInit {
   }
 
   createTeam(form: NgForm){
-    this.teamService.createTeam(form, this.captain);
+    this.teamService.createSpecialTeam(form, this.captain);
     //DODAC komunikat o stworzeniu drużyny
     this.router.navigate(['/homepage'])
   }

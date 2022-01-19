@@ -23,7 +23,7 @@ export class TeamService {
     return this.http.get<Team>(apiUrl + id);
   }
 
-  createTeam(form: NgForm, captain: User) {
+  createSpecialTeam(form: NgForm, captain: User) {
     let team = {
       _id: "a1",
       name: form.value.name,
@@ -33,9 +33,22 @@ export class TeamService {
       users: [],
       img: ""
     }
-    localStorage.setItem("newTeam", JSON.stringify(team));
-    console.log(JSON.stringify(team))
-    localStorage.setItem("role", "captain")
+    localStorage.setItem("SpecialTeam", JSON.stringify(team));
+    console.log(JSON.stringify(team));
+    localStorage.setItem("role", "captain");
+  }
+
+  getSpecialTeam(): Team {
+    let team = JSON.parse(localStorage.getItem('SpecialTeam'));
+    return team;
+  }
+
+  updateSpecialTeam(form: NgForm) {
+    let team = JSON.parse(localStorage.getItem('SpecialTeam'));
+    team.name = form.value.name;
+    team.city = form.value.city;
+    team.discipline = form.value.discipline;
+    localStorage.setItem("SpecialTeam", JSON.stringify(team));
   }
 }
 

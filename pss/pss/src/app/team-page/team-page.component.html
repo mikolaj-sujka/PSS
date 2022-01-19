@@ -3,7 +3,7 @@
   <img src="./assets/img/players-football.jpg" class="avatar-img "/>
   <div class="line1"></div>
   <div class="user-detail-container">
-    <div class="user-details">
+    <div *ngIf="editMode == false; else editForm" class="user-details">
       <div class="user-title">
         <h1>Strona Drużyny</h1>
         <div class="user-name">{{team.name}}</div>
@@ -18,10 +18,46 @@
       </div>
       <br>
       <div class="user-data">kapitan:
-        <div class="data-font">{{team.capitan.name}}</div>
+        <div class="data-font">{{team.captain.name}}</div>
       </div>
       <br>
+      <button *ngIf="team.captain._id == userId" class="btn btn-outline-primary btn-edit"
+              (click)="buttonEditChangeVal()">
+        Edytuj
+      </button>
     </div>
+    <ng-template #editForm>
+      <form #editTeamForm="ngForm" (ngSubmit)="updateSpecialTeam(editTeamForm)">
+        <div class="user-title">
+          <h1>Strona Drużyny</h1>
+          <input class="user-name" type="text" name="name" id="name" ngModel="{{team.name}}">
+        </div>
+        <br>
+        <div class="user-data">miasto:
+          <input class="data-font" type="text" name="city" id="city" ngModel="{{team.city}}">
+        </div>
+        <br>
+        <div class="user-data">dyscyplina:
+          <select id="discipline" name="discipline" ngModel="{{team.discipline}}">
+            <option value="Piłka nożna">Piłka nożna</option>
+            <option value="Siatkówka">Siatkówka</option>
+            <option value="Koszykówka">Koszykówka</option>
+          </select><br>
+        </div>
+        <br>
+        <div class="user-data">kapitan:
+          <div class="data-font">{{team.captain.name}}</div>
+        </div>
+        <br>
+        <button *ngIf="team.captain._id == userId" type="submit" class="btn btn-outline-primary btn-edit">
+          Zmień
+        </button>
+        <button *ngIf="team.captain._id == userId" class="btn btn-outline-primary btn-edit"
+                (click)="buttonEditChangeVal()">
+          Anuluj
+        </button>
+      </form>
+    </ng-template>
   </div>
 </div>
 <div class="team-list-container">
