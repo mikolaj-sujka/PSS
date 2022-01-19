@@ -10,6 +10,8 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common
 // modules
 import { AppRoutingModule } from './app-routing.module';
 import { AngularMaterialModule } from "./modules/angular-material.module";
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // components
@@ -70,6 +72,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AngularMaterialModule,
+    MatListModule,
+    MatDividerModule,
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,

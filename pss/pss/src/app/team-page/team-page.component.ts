@@ -15,8 +15,10 @@ export class TeamPageComponent implements OnInit {
     name: "",
     city: "",
     discipline: "",
+    capitan: "",
+    users: []
     img: "",
-    capitan: ""
+
   };
 
   constructor(private teamService: TeamService,  private route: ActivatedRoute) { }
