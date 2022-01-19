@@ -16,8 +16,8 @@ export class TeamPageComponent implements OnInit {
     city: "",
     discipline: "",
     capitan: "",
-    users: []
-    img: "",
+    users: [],
+    img: ""
 
   };
 

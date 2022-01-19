@@ -28,7 +28,7 @@
   <mat-list>
     <h3 class="team-list-header">Skład zespołu</h3>
     <mat-list-item *ngFor="let user of team.users; last as last">
-      <a mat-line routerLink="/user-page/{{user.id_user}}">{{user.name}}</a>
+      <a mat-line routerLink="/user-page/{{user._id}}">{{user.name}}</a>
       <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
     </mat-list-item>
   </mat-list>
