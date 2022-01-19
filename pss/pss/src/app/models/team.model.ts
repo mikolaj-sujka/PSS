@@ -5,7 +5,7 @@ export interface Team {
   name: string;
   city: string;
   discipline: string;
-  capitan: string;
+  capitan: User;
   users: User[];
   img: string;
 }

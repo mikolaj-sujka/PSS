@@ -1,0 +1,24 @@
+<app-navigation></app-navigation>
+
+<div class="create-container pt-5 pb-5">
+  <div class="background-search"></div>
+  <h1 class="form-title">Utwórz drużyne</h1>
+  <div class="form-create-team">
+    <form #createForm="ngForm" (ngSubmit)="createTeam(createForm)">
+      <label for="name" class="team-label" style="margin-left: 40px">Nazwa: </label>
+      <input type="text" id="name" name="name" ngModel/><br>
+      <label for="city" class="team-label" style="margin-left: 38px">Miasto: </label>
+      <input type="text" id="city" name="city" ngModel/><br>
+      <label for="discipline" class="team-label">Dyscyplina: </label>
+      <select id="discipline" name="discipline" ngModel="soccer">
+        <option value="soccer">Piłka nożna</option>
+        <option value="volleyball">Siatkówka</option>
+        <option value="basketball">Koszykówka</option>
+      </select><br>
+      <button class="btn btn-primary" type="submit">Stwórz</button>
+    </form>
+  </div>
+
+</div>
+
+<app-footer></app-footer>
