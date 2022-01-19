@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../models/user.model";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../services/user.service";
@@ -12,7 +12,7 @@ import {NgForm} from "@angular/forms";
 export class UserPageComponent implements OnInit {
 
   user: User = {
-    id_user: 0,
+    _id: "",
     name: "",
     email: "",
     password: "",
@@ -22,12 +22,15 @@ export class UserPageComponent implements OnInit {
     age: 0,
     weight: 0,
     height: 0,
-    img: ""
+    img: "",
+    role: ""
   };
 
   editMode = false;
+  userId = localStorage.getItem("userId");
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
@@ -35,7 +38,7 @@ export class UserPageComponent implements OnInit {
     });
   }
 
-  getUser(id: number): void {
+  getUser(id: string): void {
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
@@ -44,10 +47,20 @@ export class UserPageComponent implements OnInit {
   }
 
   updateUserData(form: NgForm): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.userService.updateUserData(id, form);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.updateUserData(id, form, this.user.email).subscribe(
+      (val) => {
+        console.log("POST call successful value returned in body");
+      },
+      response => {
+        console.log("POST call in error", response);
+      },
+      () => {
+        console.log("The POST observable is now completed.");
+        this.getUser(this.userId);
+      });
     this.buttonEditChangeVal();
-    this.getUser(1);
+
   }
 
 }

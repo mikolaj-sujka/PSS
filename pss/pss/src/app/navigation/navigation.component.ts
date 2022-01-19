@@ -11,6 +11,7 @@ import { AuthService } from "../services/auth.service";
 export class NavigationComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
+  userId = localStorage.getItem("userId");
 
   constructor(private authService: AuthService) {}
 

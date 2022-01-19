@@ -17,9 +17,9 @@
         <input type="text" id="city" name="city" ngModel/><br>
         <label for="discipline" class="search-label">Dyscyplina: </label>
         <select id="discipline" name="discipline" ngModel="any">
-          <option value="soccer">Piłka nożna</option>
-          <option value="volleyball">Siatkówka</option>
-          <option value="basketball">Koszykówka</option>
+          <option value="Piłka">Piłka nożna</option>
+          <option value="Siatkówka">Siatkówka</option>
+          <option value="Koszykówka">Koszykówka</option>
           <option value="any">Dowolne</option>
         </select><br>
         <button class="btn btn-primary" type="submit">Wyszukaj</button>
@@ -39,14 +39,14 @@
           <th>{{tableNames.col4}}</th>
         </tr>
         <tr *ngFor="let user of users">
-          <td><a routerLink="/user-page/{{user.id_user}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="user avatar"/></a></td>
-          <td><a routerLink="/user-page/{{user.id_user}}">{{user.name}}</a></td>
+          <td><a routerLink="/user-page/{{user._id}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="user avatar"/></a></td>
+          <td><a routerLink="/user-page/{{user._id}}">{{user.name}}</a></td>
           <td>{{user.city}}</td>
           <td>{{user.team}}</td>
         </tr>
         <tr *ngFor="let team of teams">
-          <td><a routerLink="/team-page/{{team.id}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="team avatar"/></a></td>
-          <td><a routerLink="/team-page/{{team.id}}">{{team.name}}</a></td>
+          <td><a routerLink="/team-page/{{team._id}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="team avatar"/></a></td>
+          <td><a routerLink="/team-page/{{team._id}}">{{team.name}}</a></td>
           <td>{{team.city}}</td>
           <td>{{team.discipline}}</td>
         </tr>
