@@ -4,128 +4,120 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 exports.createUser = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10).then(hash => {
+  bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new User({
       email: req.body.email,
       password: hash,
-      role: "user"
+      role: "user",
     });
     user
       .save()
-      .then(result => {
+      .then((result) => {
         res.status(201).json({
           message: "User created!",
-          result: result
+          result: result,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).json({
-          message: "Invalid authentication credentials!"
+          message: "Invalid authentication credentials!",
         });
       });
   });
-}
+};
 
 exports.userLogin = (req, res, next) => {
   let fetchedUser;
-  User.findOne({email: req.body.email})
-    .then(user => {
+  User.findOne({ email: req.body.email })
+    .then((user) => {
       if (!user) {
         return res.status(401).json({
-          message: "Auth failed"
+          message: "Auth failed",
         });
       }
       fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
-    .then(result => {
+    .then((result) => {
       if (!result) {
         return res.status(401).json({
-          message: "Auth failed"
+          message: "Auth failed",
         });
       }
       const token = jwt.sign(
-        {email: fetchedUser.email, userId: fetchedUser._id},
+        { email: fetchedUser.email, userId: fetchedUser._id },
         process.env.JWT_KEY,
-        {expiresIn: "1h"}
+        { expiresIn: "1h" }
       );
       res.status(200).json({
         token: token,
         expiresIn: 3600,
         userId: fetchedUser._id,
-        role: fetchedUser.role
+        role: fetchedUser.role,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       return res.status(401).json({
-        message: "Invalid authentication credentials!"
+        message: "Invalid authentication credentials!",
       });
     });
-}
+};
 
 exports.getUser = (req, res) => {
   User.findById(req.params.id)
-    .then(user => {
+    .then((user) => {
       res.status(200).json(user);
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).json({
         message: "Find Error",
-        error: error
-      })
-    })
-}
+        error: error,
+      });
+    });
+};
 
 exports.findUser = (req, res) => {
   let name = req.params.name;
-  let city = req.params.city;
-  let discipline = req.params.discipline;
 
-  if (name === "any")
-    name = ".";
-  if (city === "any")
-    city = ".";
-  if (discipline === "any")
-    discipline = ".";
+  if (name === "any") name = ".";
 
-  User.find({name: new RegExp(name), city: new RegExp(city), discipline: new RegExp(discipline)})
-    .then(users => {
+  User.find({ name: new RegExp(name) })
+    .then((users) => {
       res.status(200).json(users);
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).json({
         message: "Find Error",
-        error: error
-      })
-    })
-}
+        error: error,
+      });
+    });
+};
 
 exports.updateUser = (req, res) => {
-  User.updateOne({email: req.body.email},
+  User.updateOne(
+    { email: req.body.email },
     {
       $set: {
         name: req.body.name,
-        city: req.body.city,
-        discipline: req.body.discipline,
         age: req.body.age,
         weight: req.body.weight,
-        height: req.body.height
-      }
-    })
-    .then(result => {
+        height: req.body.height,
+      },
+    }
+  )
+    .then((result) => {
       if (result.matchedCount > 0) {
-        res.status(204).json({message: "Update successful!"});
+        res.status(204).json({ message: "Update successful!" });
       } else {
-        console.log(result)
-        res.status(401).json({message: "Not authorized!"});
+        console.log(result);
+        res.status(401).json({ message: "Not authorized!" });
       }
     })
-    .catch(error => {
-      console.log(error)
+    .catch((error) => {
+      console.log(error);
       res.status(500).json({
         message: "Couldn't update user!",
-        error: error
+        error: error,
       });
     });
-}
-
+};

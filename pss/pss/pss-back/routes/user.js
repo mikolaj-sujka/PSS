@@ -8,9 +8,8 @@ router.post("/register", UserController.createUser);
 
 router.post("/login", UserController.userLogin);
 
-router.get("/find/:name-:city-:discipline", UserController.findUser)
-router.get("/:id",  UserController.getUser)
-router.post("/:id",  UserController.updateUser)
-
+router.get("/find/:name", UserController.findUser);
+router.get("/:id", UserController.getUser);
+router.post("/:id", UserController.updateUser);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 <div class="user-container">
-  <img src="./assets/img/user-avatar.png" class="avatar-img" alt="user avatar"/>
+  <img src="./assets/img/user-avatar.png" class="avatar-img" alt="user avatar" />
   <div class="line1"></div>
   <div class="user-detail-container">
     <div *ngIf="editMode == false; else editForm" class="user-details">
@@ -10,9 +10,7 @@
         <div class="user-name">{{user.name}}</div>
       </div>
       <br>
-      <div class="user-data">miasto
-        <div class="data-font">{{user.city}}</div>
-      </div>
+
       <br>
       <div class="user-data">wiek
         <div class="data-font">{{user.age}}</div>
@@ -26,9 +24,7 @@
         <div class="data-font">{{user.height}}</div>
       </div>
       <br>
-      <div class="user-data">dyscyplina
-        <div class="data-font">{{user.discipline}}</div>
-      </div>
+
       <br>
       <button *ngIf="user._id == userId" class="btn btn-outline-primary btn-edit" (click)="buttonEditChangeVal()">
         Edytuj
@@ -43,10 +39,8 @@
             <input class="user-name" type="text" name="name" id="name" ngModel="{{user.name}}">
           </div>
           <br>
-          <div class="user-data">miasto
-            <input class="data-font" type="text" name="city" id="city" ngModel="{{user.city}}">
-          </div>
-          <br>
+
+
           <div class="user-data">wiek
             <input class="data-font" type="number" name="age" id="age" ngModel="{{user.age}}">
           </div>
@@ -59,10 +53,8 @@
             <input class="data-font" type="number" name="height" id="height" ngModel="{{user.height}}">
           </div>
           <br>
-          <div class="user-data">dyscyplina
-            <input class="data-font" type="text" name="discipline" id="discipline" ngModel="{{user.discipline}}">
-          </div>
-          <br>
+
+
           <button class="btn btn-outline-primary btn-edit" type="submit">Zmień</button>
           <button class="btn btn-outline-primary btn-edit" (click)="buttonEditChangeVal()">
             Anuluj
@@ -72,7 +64,7 @@
     </ng-template>
     <div>
       <div class="team-font">{{user.team}}</div>
-      <img src="./assets/img/default-img.png" class="team-img" alt="team avatar"/>
+      <img src="./assets/img/default-img.png" class="team-img" alt="team avatar" />
     </div>
   </div>
 
