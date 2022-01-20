@@ -4,24 +4,30 @@
     <div class="background-search"></div>
     <h1 class="form-title">Wyszukiwanie</h1>
     <div class="radio-buttons">
-      <input type="radio" value="user" name="search-option" id="user-radio" #radioBox1 (input)="changeNames(radioBox1.value)" checked>
+      <input type="radio" value="user" name="search-option" id="user-radio" #radioBox1
+        (input)="changeNames(radioBox1.value)" checked>
       <label for="user-radio" class="search-label">Zawodnik</label>
-      <input type="radio" value="team" name="search-option" id="team-radio" #radioBox2 (input)="changeNames(radioBox2.value)">
+      <input type="radio" value="team" name="search-option" id="team-radio" #radioBox2
+        (input)="changeNames(radioBox2.value)">
       <label for="team-radio" class="search-label">Drużyna</label>
     </div>
     <div class="form-search">
       <form #searchForm="ngForm" (ngSubmit)="searchUser(searchForm)">
         <label for="name" class="search-label">{{tableNames.col2}}: </label>
-        <input type="text" id="name" name="name" ngModel/><br>
-        <label for="city" class="search-label">Miasto: </label>
-        <input type="text" id="city" name="city" ngModel/><br>
-        <label for="discipline" class="search-label">Dyscyplina: </label>
-        <select id="discipline" name="discipline" ngModel="any">
-          <option value="Piłka">Piłka nożna</option>
-          <option value="Siatkówka">Siatkówka</option>
-          <option value="Koszykówka">Koszykówka</option>
-          <option value="any">Dowolne</option>
-        </select><br>
+        <input type="text" id="name" name="name" ngModel /><br>
+        <div *ngIf="show">
+          <label for="city" class="search-label">Miasto: </label>
+          <input type="text" id="city" name="city" ngModel /><br>
+
+
+          <label for="discipline" class="search-label">Dyscyplina: </label>
+          <select id="discipline" name="discipline" ngModel="any">
+            <option value="Piłka">Piłka nożna</option>
+            <option value="Siatkówka">Siatkówka</option>
+            <option value="Koszykówka">Koszykówka</option>
+            <option value="any">Dowolne</option>
+          </select><br>
+        </div>
         <button class="btn btn-primary" type="submit">Wyszukaj</button>
       </form>
     </div>
@@ -35,17 +41,17 @@
         <tr>
           <th>{{tableNames.col1}}</th>
           <th>{{tableNames.col2}}</th>
-          <th>{{tableNames.col3}}</th>
-          <th>{{tableNames.col4}}</th>
+          <th *ngIf="show">{{tableNames.col3}}</th>
+          <th *ngIf="show">{{tableNames.col4}}</th>
         </tr>
         <tr *ngFor="let user of users">
-          <td><a routerLink="/user-page/{{user._id}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="user avatar"/></a></td>
+          <td><a routerLink="/user-page/{{user._id}}"><img src="./assets/img/players-football.jpg" class="avatar-img"
+                alt="user avatar" /></a></td>
           <td><a routerLink="/user-page/{{user._id}}">{{user.name}}</a></td>
-          <td>{{user.city}}</td>
-          <td>{{user.team}}</td>
         </tr>
         <tr *ngFor="let team of teams">
-          <td><a routerLink="/team-page/{{team._id}}"><img src="./assets/img/players-football.jpg" class="avatar-img" alt="team avatar"/></a></td>
+          <td><a routerLink="/team-page/{{team._id}}"><img src="./assets/img/players-football.jpg" class="avatar-img"
+                alt="team avatar" /></a></td>
           <td><a routerLink="/team-page/{{team._id}}">{{team.name}}</a></td>
           <td>{{team.city}}</td>
           <td>{{team.discipline}}</td>
