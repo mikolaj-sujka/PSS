@@ -58,17 +58,20 @@ export class TeamPageComponent implements OnInit {
     this.buttonEditChangeVal();
   }
 
-
   findUsers(editTeamForm: NgForm) {
-    this.specialUsers = this.userService.getSpecialUsers();
+    if(editTeamForm.value.name != "") {
+      this.specialUsers = this.userService.getSpecialUsers();
+    }
   }
 
   addPlayer(user: User) {
+    console.log(user)
     const index: number = this.specialUsers.indexOf(user);
     if (index !== -1) {
       this.specialUsers.splice(index, 1);
     }
     this.teamService.addSpecialPlayer(user);
+
     this.team = this.teamService.getSpecialTeam();
   }
 
