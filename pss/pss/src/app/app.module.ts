@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularMaterialModule } from "./modules/angular-material.module";
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // components
@@ -78,6 +79,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularMaterialModule,
     MatListModule,
     MatDividerModule,
+    MatTableModule,
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,

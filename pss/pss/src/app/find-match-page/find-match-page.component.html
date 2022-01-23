@@ -1,5 +1,44 @@
 <app-navigation></app-navigation>
-<div class="">
+<div class="find-match-container">
+  <table mat-table class="match-table" [dataSource]="dataSource">
+    <!-- User name Definition -->
+    <ng-container matColumnDef="Team">
+      <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.teamC}} </mat-cell>
+    </ng-container>
+
+    <!-- Age Definition -->
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+    </ng-container>
+
+    <!-- Title Definition -->
+    <ng-container matColumnDef="Time">
+      <mat-header-cell *matHeaderCellDef> Time </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Place">
+      <mat-header-cell *matHeaderCellDef> Place </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Play">
+      <mat-header-cell *matHeaderCellDef>
+
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button class="btn btn-outline-primary btn-edit" (click)="buttonPlay()">
+          Graj!
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef=displayedColumns></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </table>
 
 </div>
 <app-footer></app-footer>

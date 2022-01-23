@@ -2,9 +2,9 @@ import {Time} from "@angular/common";
 import { Team } from "./team.model";
 
 export interface Match {
-  date: Date;
-  time: Time;
+  date: string;
+  time: string;
   address: string;
-  teamC: Team;
-  team2: Team;
+  teamC: string;  //zmienic na Team
+  team2: string;  //zmienic na Team
 }
