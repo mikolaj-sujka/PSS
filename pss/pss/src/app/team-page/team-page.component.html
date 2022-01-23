@@ -85,7 +85,7 @@
   <div *ngIf="changePlayers == true">
     <form #editTeamForm="ngForm" (ngSubmit)="findUsers(editTeamForm)">
       <div class="user-data">Nazwa użytkownika:
-        <input class="data-font" type="text" name="name" id="searchName" ngModel/>
+        <input type="text" name="name" id="searchName" ngModel/>
       </div>
       <button type="submit" class="btn btn-outline-primary btn-edit">
         Wyszukaj
