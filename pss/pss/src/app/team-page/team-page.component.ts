@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Team} from "../models/team.model";
 import {TeamService} from "../services/team.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {User} from "../models/user.model";
@@ -28,7 +28,7 @@ export class TeamPageComponent implements OnInit {
   userId = localStorage.getItem("userId");
   specialUsers: User[];
 
-  constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService) {
+  constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,12 +36,18 @@ export class TeamPageComponent implements OnInit {
   }
 
   getTeam(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.getID()
     if (id == "captain") {
-      this.team = this.teamService.getSpecialTeam();
-    } else {
-      this.teamService.getTeamById(id).subscribe(team => this.team = team);
-    }
+      this.team = this.teamService.getSpecialCaptainTeam();
+    } else if (id == "player") {
+      this.team = this.teamService.getSpecialPlayerTeam();
+    }else {
+        this.teamService.getTeamById(id).subscribe(team => this.team = team);
+      }
+  }
+
+  getID() {
+    return this.route.snapshot.paramMap.get('id');
   }
 
   buttonEditChangeVal(): void {
@@ -52,9 +58,14 @@ export class TeamPageComponent implements OnInit {
     this.changePlayers = !this.changePlayers;
   }
 
+  buttonLeaveTeam() {
+    localStorage.setItem("role", "user")
+    this.router.navigate(['/homepage'])
+  }
+
   updateSpecialTeam(form: NgForm): void {
     this.teamService.updateSpecialTeam(form);
-    this.team = this.teamService.getSpecialTeam();
+    this.team = this.teamService.getSpecialCaptainTeam();
     this.buttonEditChangeVal();
   }
 
@@ -72,12 +83,12 @@ export class TeamPageComponent implements OnInit {
     }
     this.teamService.addSpecialPlayer(user);
 
-    this.team = this.teamService.getSpecialTeam();
+    this.team = this.teamService.getSpecialCaptainTeam();
   }
 
   deletePlayer(user: User) {
     const index: number = this.team.users.indexOf(user);
     this.teamService.deleteSpecialPlayer(index);
-    this.team = this.teamService.getSpecialTeam();
+    this.team = this.teamService.getSpecialCaptainTeam();
   }
 }
