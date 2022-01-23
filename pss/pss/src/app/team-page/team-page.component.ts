@@ -27,23 +27,25 @@ export class TeamPageComponent implements OnInit {
   changePlayers = false;
   userId = localStorage.getItem("userId");
   specialUsers: User[];
+  alertMessage = ""
 
   constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.getTeam();
+    this.route.params.subscribe((routeParams) => {
+      this.getTeam(routeParams.id);
+    });
   }
 
-  getTeam(): void {
-    const id = this.getID()
+  getTeam(id: string): void {
     if (id == "captain") {
       this.team = this.teamService.getSpecialCaptainTeam();
     } else if (id == "player") {
       this.team = this.teamService.getSpecialPlayerTeam();
-    }else {
-        this.teamService.getTeamById(id).subscribe(team => this.team = team);
-      }
+    } else {
+      this.teamService.getTeamById(id).subscribe(team => this.team = team);
+    }
   }
 
   getID() {
@@ -70,13 +72,19 @@ export class TeamPageComponent implements OnInit {
   }
 
   findUsers(editTeamForm: NgForm) {
-    if(editTeamForm.value.name != "") {
+    if (editTeamForm.value.name != "") {
       this.specialUsers = this.userService.getSpecialUsers();
+      for (let user of this.team.users) {
+        let index = this.specialUsers.findIndex(x => x.email === user.email)
+        if (index !== -1) {
+          this.specialUsers.splice(index, 1);
+        }
+      }
     }
   }
 
   addPlayer(user: User) {
-    console.log(user)
+    this.alertMessage = "Zaproszono zawodnika!"
     const index: number = this.specialUsers.indexOf(user);
     if (index !== -1) {
       this.specialUsers.splice(index, 1);
@@ -87,8 +95,13 @@ export class TeamPageComponent implements OnInit {
   }
 
   deletePlayer(user: User) {
+    this.alertMessage = "Usunięto zawodnika!"
     const index: number = this.team.users.indexOf(user);
     this.teamService.deleteSpecialPlayer(index);
     this.team = this.teamService.getSpecialCaptainTeam();
+  }
+
+  closeAlert() {
+    this.alertMessage = "";
   }
 }

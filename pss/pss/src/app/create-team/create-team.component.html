@@ -16,6 +16,9 @@
         <option value="Koszykówka">Koszykówka</option>
       </select><br>
       <button class="btn btn-primary" type="submit">Stwórz</button>
+      <div class="alert alert-success" *ngIf='alertMessage !== ""'>
+        {{alertMessage}}
+      </div>
     </form>
   </div>
 
