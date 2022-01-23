@@ -64,7 +64,7 @@ export class TeamPageComponent implements OnInit {
   }
 
   buttonFindMatch() {
-    //this.router.navigate(['/'])
+    this.router.navigate(['/find-match'])
   }
 
   buttonCreateMatch() {
