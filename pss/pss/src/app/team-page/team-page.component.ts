@@ -63,6 +63,14 @@ export class TeamPageComponent implements OnInit {
     this.router.navigate(['/homepage'])
   }
 
+  buttonFindMatch() {
+    //this.router.navigate(['/'])
+  }
+
+  buttonCreateMatch() {
+    //this.router.navigate(['/'])
+  }
+
   updateSpecialTeam(form: NgForm): void {
     this.teamService.updateSpecialTeam(form);
     this.team = this.teamService.getSpecialCaptainTeam();
