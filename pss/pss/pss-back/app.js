@@ -24,6 +24,9 @@ mongoose
   })
   .catch(() => {
     console.log("Connection failed!");
+    console.log("mongodb+srv://admin:" +
+    process.env.MONGO_ATLAS_PW +
+    "@cluster0.ovwqs.mongodb.net/mean-db-first")
   });
 
 app.use(bodyParser.json());

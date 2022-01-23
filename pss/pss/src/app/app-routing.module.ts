@@ -13,6 +13,7 @@ import { SocialMediaComponent } from './subpage/social-media/social-media.compon
 import {SearchUsersTeamsComponent} from "./search-users-teams/search-users-teams.component";
 import {UserPageComponent} from "./user-page/user-page.component";
 import {TeamPageComponent} from "./team-page/team-page.component";
+import {CreateTeamComponent} from "./create-team/create-team.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent,  data: { title: 'mainPage', depth: 1 }},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: "search-users-teams", component: SearchUsersTeamsComponent, data: {title: 'searchUsersTeams', depth: 2, bodyClass: 'searchUserTeams'}},
   { path: "user-page/:id", component: UserPageComponent, data: {title: 'userPage', depth: 2, bodyClass: 'userPage'}},
   { path: "team-page/:id", component: TeamPageComponent, data: {title: 'teamPage', depth: 2, bodyClass: 'teamPage'}},
+  { path: "create-team", component: CreateTeamComponent, data: {title: 'createTeamPage', depth: 2, bodyClass: 'createTeamPage'}},
   { path: "auth", loadChildren: ()=> import("./modules/auth.module").then(m => m.AuthModule) }
 ];
 

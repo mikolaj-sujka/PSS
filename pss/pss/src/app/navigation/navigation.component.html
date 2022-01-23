@@ -39,6 +39,10 @@
       <ng-template #showAuthenticated>
           <div class="messages-icon"></div>
           <a routerLink="/user-page/{{userId}}"><div class="myacc-icon"></div></a>
+        <!---Przerzucić do menu--->
+          <a routerLink="/create-team" *ngIf='role=="user"'><div>Stwórz team</div></a>
+          <a routerLink="/team-page/captain" *ngIf='role=="captain"'><div>Przeglądaj drużyne</div></a>
+          <a routerLink="/team-page/player" *ngIf='role=="player"'><div>Przeglądaj drużyne</div></a>
           <!-- <div class="mx-auto"> -->
             <button class="btn" type="submit" (click)="onLogout()">
               <span class="btn btn-logout">Wyloguj</span>

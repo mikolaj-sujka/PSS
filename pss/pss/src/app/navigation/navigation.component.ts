@@ -12,6 +12,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
   userId = localStorage.getItem("userId");
+  role = localStorage.getItem("role");
 
   constructor(private authService: AuthService) {}
 

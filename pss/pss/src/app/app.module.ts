@@ -38,6 +38,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { MainPageComponent } from './main-page/main-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { TeamPageComponent } from './team-page/team-page.component';
+import { CreateTeamComponent } from './create-team/create-team.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -63,7 +64,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SearchUsersTeamsComponent,
     MainPageComponent,
     UserPageComponent,
-    TeamPageComponent
+    TeamPageComponent,
+    CreateTeamComponent
   ],
   imports: [
     BrowserModule,
