@@ -34,7 +34,6 @@ export class TeamService {
       img: ""
     }
     localStorage.setItem("SpecialTeam", JSON.stringify(team));
-    console.log(JSON.stringify(team));
     localStorage.setItem("role", "captain");
   }
 
