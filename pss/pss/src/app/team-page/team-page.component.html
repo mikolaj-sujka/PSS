@@ -49,7 +49,8 @@
           <div class="data-font">{{team.captain == null ? "" : team.captain.name}}</div>
         </div>
         <br>
-        <button *ngIf="team.captain!=null && team.captain._id == userId" type="submit" class="btn btn-outline-primary btn-edit">
+        <button *ngIf="team.captain!=null && team.captain._id == userId" type="submit"
+                class="btn btn-outline-primary btn-edit">
           Zmień
         </button>
         <button *ngIf="team.captain!=null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
@@ -66,7 +67,9 @@
     <mat-list-item *ngFor="let user of team.users; last as last">
       <a mat-line routerLink="/user-page/{{user._id}}">{{user.name}}</a>
       <div *ngIf="team.captain!=null && team.captain._id == userId" style="padding-right: 10px">Zaproszony</div>
-      <button *ngIf="team.captain!=null && team.captain._id == userId" class="btn btn-outline-primary btn-edit" (click)="deletePlayer(user)">X</button>
+      <button *ngIf="team.captain!=null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
+              (click)="deletePlayer(user)">X
+      </button>
       <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
     </mat-list-item>
   </mat-list>
@@ -78,6 +81,11 @@
   </button>
 </div>
 <div class="edit-players-container">
+  <div class="alert alert-warning alert-dismissible fade show" *ngIf='alertMessage != ""'>
+    {{alertMessage}}
+    <button type="button" class="btn-close" (click)="closeAlert()">
+    </button>
+  </div>
   <button *ngIf="team.captain!=null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
           (click)="buttonChangePlayers()">
     Dodaj zawodnika
@@ -95,12 +103,18 @@
       <h3 class="team-list-header">Sugerowani użytkownicy: </h3>
       <mat-list-item *ngFor="let user of specialUsers; last as last">
         <div matLine>
-        <div style="float: left">{{user.name}}</div>
-        <button class="btn btn-outline-primary btn-invite" style="float: right" (click)="addPlayer(user)">Zaproś do drużyny</button>
+          <div style="float: left">{{user.name}}</div>
+          <button class="btn btn-outline-primary btn-invite" style="float: right" (click)="addPlayer(user)">Zaproś do
+            drużyny
+          </button>
         </div>
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
       </mat-list-item>
     </mat-list>
   </div>
+  <button *ngIf="changePlayers" class="btn btn-outline-primary btn-edit"
+          (click)="buttonChangePlayers()">
+    Zakończ
+  </button>
 </div>
 <app-footer></app-footer>
