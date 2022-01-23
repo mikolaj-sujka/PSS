@@ -21,7 +21,7 @@
         <div class="data-font">{{team.captain == null ? "" : team.captain.name}}</div>
       </div>
       <br>
-      <button *ngIf="!team.captain==null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
+      <button *ngIf="team.captain!=null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
               (click)="buttonEditChangeVal()">
         Edytuj
       </button>
@@ -49,10 +49,10 @@
           <div class="data-font">{{team.captain == null ? "" : team.captain.name}}</div>
         </div>
         <br>
-        <button *ngIf="!team.captain==null && team.captain._id == userId" type="submit" class="btn btn-outline-primary btn-edit">
+        <button *ngIf="team.captain!=null && team.captain._id == userId" type="submit" class="btn btn-outline-primary btn-edit">
           Zmień
         </button>
-        <button *ngIf="!team.captain==null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
+        <button *ngIf="team.captain!=null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
                 (click)="buttonEditChangeVal()">
           Anuluj
         </button>
@@ -65,8 +65,8 @@
     <h3 class="team-list-header">Skład zespołu</h3>
     <mat-list-item *ngFor="let user of team.users; last as last">
       <a mat-line routerLink="/user-page/{{user._id}}">{{user.name}}</a>
-      <div *ngIf="!team.captain==null && team.captain._id == userId" style="padding-right: 10px">Zaproszony</div>
-      <button *ngIf="!team.captain==null && team.captain._id == userId" class="btn btn-outline-primary btn-edit" (click)="deletePlayer(user)">X</button>
+      <div *ngIf="team.captain!=null && team.captain._id == userId" style="padding-right: 10px">Zaproszony</div>
+      <button *ngIf="team.captain!=null && team.captain._id == userId" class="btn btn-outline-primary btn-edit" (click)="deletePlayer(user)">X</button>
       <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
     </mat-list-item>
   </mat-list>
@@ -78,7 +78,7 @@
   </button>
 </div>
 <div class="edit-players-container">
-  <button *ngIf="!team.captain==null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
+  <button *ngIf="team.captain!=null && team.captain._id == userId" class="btn btn-outline-primary btn-edit"
           (click)="buttonChangePlayers()">
     Dodaj zawodnika
   </button>
