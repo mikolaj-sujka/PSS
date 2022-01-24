@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
         Validators.required, Validators.email
       ]],
       password: ['', [
-        Validators.required, 
-        Validators.minLength(4), 
+        Validators.required,
+        Validators.minLength(4),
         Validators.maxLength(20)
       ]],
       name: ['', [
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return;
     }
     this.isLoading = true;
-    this.authService.createUser(this.registerForm.value.email, this.registerForm.value.password);
+    this.authService.createUser(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.name, this.registerForm.value.surname);
   }
 
   ngOnDestroy() {
