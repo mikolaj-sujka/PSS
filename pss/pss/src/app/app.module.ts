@@ -42,6 +42,7 @@ import { TeamPageComponent } from './team-page/team-page.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
 import { FindMatchPageComponent } from './find-match-page/find-match-page.component';
 import { TextInputComponent } from './validators/text-input/text-input.component';
+import { CreateMatchComponent } from './create-match/create-match.component';
 
 
 
@@ -70,7 +71,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserPageComponent,
     TeamPageComponent,
     CreateTeamComponent,
-    FindMatchPageComponent
+    FindMatchPageComponent,
+    CreateMatchComponent
   ],
   imports: [
     BrowserModule,

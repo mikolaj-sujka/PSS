@@ -1,0 +1,43 @@
+<div class="create-match-container">
+  <form (submit)="buttonCreateMatch()" class="create-match"> <!-- dodać tą funkcje-->
+    <mat-form-field class="field">
+      <input
+        matInput
+        type="text"
+        name="date"
+        ngModel=""
+        required
+        minlength="6"
+        placeholder="data:"
+        #date="ngModel">
+      <mat-error *ngIf="date.invalid">Proszę podać datę</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input
+        matInput
+        type="text"
+        name="time"
+        ngModel=""
+        required
+        minlength="4"
+        placeholder="godzina:"
+        #time="ngModel">
+      <mat-error *ngIf="time.invalid">Proszę podać godzinę</mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input
+        matInput
+        type="text"
+        name="place"
+        ngModel=""
+        required
+        minlength="8"
+        placeholder="miejsce:"
+        #place="ngModel">
+      <mat-error *ngIf="place.invalid">Proszę podać adres</mat-error>
+    </mat-form-field>
+    <button
+      class="btn btn-outline-primary btn-edit"
+      type="submit">Stwórz</button>
+  </form>
+</div>
