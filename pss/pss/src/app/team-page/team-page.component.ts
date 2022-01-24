@@ -41,10 +41,10 @@ export class TeamPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTeam();
-    
+    this.getTeam(this.getID());
+
     this.match.push(JSON.parse(localStorage.getItem("Match")));
-    
+
     this.route.params.subscribe((routeParams) => {
       this.getTeam(routeParams.id);
     });
