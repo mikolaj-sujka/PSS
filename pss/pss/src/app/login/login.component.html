@@ -10,8 +10,7 @@
     <div class="col-md-6">
       <div class="d-flex justify-content-center text-center p-0 mt-5">
         <form
-          (submit)="onLogin(loginForm)"
-          #loginForm="ngForm"
+          [formGroup]="loginForm"
           *ngIf="!isLoading"
         >
           <div class="row no-gutters sign-up-content mr-5">
@@ -34,7 +33,19 @@
             </div>
           </div>
           <div class="form-floating mt-1">
-            <input
+            <app-text-input
+              [formControl]="loginForm.controls['email']"
+              [label]="'email'"
+              [type]="'email'"
+            ></app-text-input>
+          </div>
+          <div class="form-group sign-in-up-margin">
+            <app-text-input
+              [formControl]="loginForm.controls['password']"
+              [label]="'password'"
+              [type]="'password'"
+            ></app-text-input>
+            <!-- <input
               class="form-control form-login"
               id="floatingInput"
               matInput
@@ -59,9 +70,9 @@
               #passwordInput="ngModel"
               required
             />
-            <label for="floatingPassword">Hasło</label>
+            <label for="floatingPassword">Hasło</label> -->
           </div>
-          <button class="w-100 btn btn-login btn-lg mt-4" type="submit">
+          <button class="w-100 btn btn-login btn-lg mt-4" type="button" (click)="onLogin()">
             Zaloguj
           </button>
         </form>

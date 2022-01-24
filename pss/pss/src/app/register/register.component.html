@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-6">
       <div class="d-flex justify-content-center text-center p-0 mt-5">
-        <form (submit)="onRegister(registerForm)" #registerForm="ngForm">
+        <form [formGroup]="registerForm">
           <div class="row no-gutters sign-up-content mr-5">
             <div class="col d-flex justify-content-center mt-1 p-0">
               <h1 class="h3 mb-3 fw-normal text-left signing-txt-login m-0 p-0">
@@ -30,53 +30,34 @@
             </div>
           </div>
           <div class="form-floating mt-1">
-            <input
-              name="name"
-              type="text"
-              class="form-control form-login"
-              id="floatingName"
-              placeholder="Name"
-            />
-            <label for="floatingInput">Imię</label>
+            <app-text-input
+              [formControl]="registerForm.controls['name']"
+              [label]="'name'"
+              [type]="'text'"
+            ></app-text-input>
           </div>
           <div class="form-floating">
-            <input
-              name="surname"
-              type="text"
-              class="form-control form-login"
-              id="floatingSurname"
-              placeholder="Surname"
-            />
-            <label for="floatingPassword">Nazwisko</label>
+            <app-text-input
+              [formControl]="registerForm.controls['surname']"
+              [label]="'surname'"
+              [type]="'text'"
+            ></app-text-input>
           </div>
           <div class="form-floating">
-            <input
-              name="email"
-              class="form-control form-login"
-              id="floatingEmail"
-              ngModel
-              type="email"
-              placeholder="E-Mail"
-              #emailInput="ngModel"
-              required
-              email
-            />
-            <label for="floatingEmail">Email</label>
+            <app-text-input
+              [formControl]="registerForm.controls['email']"
+              [label]="'email'"
+              [type]="'email'"
+            ></app-text-input>
           </div>
           <div class="form-floating">
-            <input
-              class="form-control form-login"
-              id="floatingPassword"
-              type="password"
-              name="password"
-              ngModel
-              placeholder="Password"
-              #passwordInput="ngModel"
-              required
-            />
-            <label for="floatingPassword">Hasło</label>
+            <app-text-input
+              [formControl]="registerForm.controls['password']"
+              [label]="'password'"
+              [type]="'password'"
+            ></app-text-input>
           </div>
-          <button class="w-100 btn btn-login btn-lg mt-4" type="submit">
+          <button class="w-100 btn btn-login btn-lg mt-4" type="button" (click)="onRegister()">
             Rejestracja
           </button>
         </form>

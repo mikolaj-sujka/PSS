@@ -1,0 +1,29 @@
+.form-control-custom {
+  display: block !important;
+  width: 100% !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  border-color: #1E90FF !important;
+  border-style: solid !important;
+  border-width: 0 0 1px 0 !important;
+  padding: 1.5rem 1rem 0.9rem 1.5rem !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  background-color: #fff !important;
+  background-clip: padding-box !important;
+
+  &:focus {
+    color: #495057 !important;
+    background-color: #fff !important;
+    border-color: #fff !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  &::placeholder {
+    color: #a7a7a7 !important;
+    font-size: 15px !important;
+    opacity: 50%;
+  }
+}
