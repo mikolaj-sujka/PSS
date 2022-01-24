@@ -7,20 +7,20 @@
     placeholder="{{ label }}"
   />
   <div *ngIf="ngControl.control.errors?.required" class="invalid-feedback">
-    Please enter a {{ label }}
+    Proszę wprowadzić {{ label }}
   </div>
   <div *ngIf="ngControl.control.errors?.minlength" class="invalid-feedback">
-    {{ label }} must be at least
+    {{ label }} jest za krótkie - minimalnie
     {{ ngControl.control.errors.minlength["requiredLength"] }}
   </div>
   <div *ngIf="ngControl.control.errors?.maxlength" class="invalid-feedback">
-    {{ label }} must be at most
+    {{ label }} jest za długie - maksymalnie
     {{ ngControl.control.errors.maxlength["requiredLength"] }}
   </div>
   <div *ngIf="ngControl.control.errors?.pattern" class="invalid-feedback">
-    {{ label }} does not match pattern
+    {{ label }} jest nieodpowiednie
   </div>
   <div *ngIf="ngControl.control.errors?.isMatching" class="invalid-feedback">
-    Passwords do not match
+    Hasła się nie zgadzają
   </div>
 </div>
