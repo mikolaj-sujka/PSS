@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularMaterialModule } from "./modules/angular-material.module";
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // components
@@ -39,7 +40,9 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { TeamPageComponent } from './team-page/team-page.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
+import { FindMatchPageComponent } from './find-match-page/find-match-page.component';
 import { TextInputComponent } from './validators/text-input/text-input.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -66,7 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainPageComponent,
     UserPageComponent,
     TeamPageComponent,
-    CreateTeamComponent
+    CreateTeamComponent,
+    FindMatchPageComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularMaterialModule,
     MatListModule,
     MatDividerModule,
+    MatTableModule,
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,

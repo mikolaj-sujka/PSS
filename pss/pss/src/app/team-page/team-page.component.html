@@ -117,4 +117,43 @@
     Zakończ
   </button>
 </div>
+<div class="matches-captain-container" *ngIf="team.captain!=null && team.captain._id == userId">
+  <h3 class="team-list-header" style="text-align: left">Spotkania</h3>
+  <table mat-table style="width: 100%; margin-bottom: 10px" [dataSource]="dataSource">
+    <!-- User name Definition -->
+    <ng-container matColumnDef="Team">
+      <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element != null ? element.teamC : ""}} </mat-cell>
+    </ng-container>
+
+    <!-- Age Definition -->
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element != null ? element.date : ""}} </mat-cell>
+    </ng-container>
+
+    <!-- Title Definition -->
+    <ng-container matColumnDef="Time">
+      <mat-header-cell *matHeaderCellDef> Time </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element != null ? element.time : ""}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Place">
+      <mat-header-cell *matHeaderCellDef> Place </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element != null ? element.address : ""}} </mat-cell>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef=displayedColumns></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </table>
+  <button style="margin-top: 10px; margin-right: 30px" class="btn btn-outline-primary btn-edit"
+          (click)="buttonFindMatch()">
+    Szukaj spotkań
+  </button>
+  <button style="margin-top: 10px" class="btn btn-outline-primary btn-edit"
+          (click)="buttonCreateMatch()">
+    Stwórz spotkanie
+  </button>
+</div>
 <app-footer></app-footer>
