@@ -118,7 +118,7 @@
   </button>
 </div>
 <div class="matches-captain-container" *ngIf="team.captain!=null && team.captain._id == userId">
-  <h3 class="team-list-header" style="text-align: left">Spotkania</h3>
+  <h3 class="team-list-header" style="text-align: left">Twoje spotkania</h3>
   <table mat-table style="width: 100%; margin-bottom: 10px" [dataSource]="dataSource">
     <!-- User name Definition -->
     <ng-container matColumnDef="Team">

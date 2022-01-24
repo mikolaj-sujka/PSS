@@ -16,7 +16,7 @@ export class CreateMatchComponent implements OnInit {
   buttonCreateMatch(form: NgForm) {
     if (form.valid){
       form.resetForm()
-      //WYSWIETL KOMUNIKAT
+      //DODAC KOMUNIKAT
     }
   }
 
