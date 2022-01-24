@@ -1,5 +1,5 @@
 <div class="create-match-container">
-  <form (submit)="buttonCreateMatch()" class="create-match"> <!-- dodać tą funkcje-->
+  <form (submit)="buttonCreateMatch(inputForm)" #inputForm="ngForm" class="create-match"> <!-- dodać tą funkcje-->
     <mat-form-field class="field">
       <input
         matInput
@@ -38,6 +38,6 @@
     </mat-form-field>
     <button
       class="btn btn-outline-primary btn-edit"
-      type="submit">Stwórz</button>
+      type="submit">Stwórz spotkanie</button>
   </form>
 </div>

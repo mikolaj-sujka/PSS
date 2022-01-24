@@ -81,10 +81,6 @@ export class TeamPageComponent implements OnInit {
     this.router.navigate(['/find-match'])
   }
 
-  buttonCreateMatch() {
-    //this.router.navigate(['/'])
-  }
-
   updateSpecialTeam(form: NgForm): void {
     this.teamService.updateSpecialTeam(form);
     this.team = this.teamService.getSpecialCaptainTeam();

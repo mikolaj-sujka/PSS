@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-create-match',
@@ -12,8 +13,11 @@ export class CreateMatchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buttonCreateMatch() {
-
+  buttonCreateMatch(form: NgForm) {
+    if (form.valid){
+      form.resetForm()
+      //WYSWIETL KOMUNIKAT
+    }
   }
 
 }
