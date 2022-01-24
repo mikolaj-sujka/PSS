@@ -39,7 +39,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { MainPageComponent } from './main-page/main-page.component';
+import { UserPageComponent } from './user-page/user-page.component';
+import { TeamPageComponent } from './team-page/team-page.component';
+import { CreateTeamComponent } from './create-team/create-team.component';
+import { FindMatchPageComponent } from './find-match-page/find-match-page.component';
+import { TextInputComponent } from './validators/text-input/text-input.component';
+import { CreateMatchComponent } from './create-match/create-match.component';
 import { ToastrModule } from 'ngx-toastr';
+
 
 
 
@@ -67,7 +75,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserPageComponent,
     TeamPageComponent,
     CreateTeamComponent,
-    FindMatchPageComponent
+    FindMatchPageComponent,
+    CreateMatchComponent
   ],
   imports: [
     BrowserModule,
