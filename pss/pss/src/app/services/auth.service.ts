@@ -13,6 +13,7 @@ import { AuthData } from "../models/auth-data.model";
 
 //3rd
 import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from "ngx-toastr";
 
 const BACKEND_URL = environment.apiUrl + "/user/";
 
@@ -25,7 +26,8 @@ export class AuthService {
   private role: string;
   private authStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router, private spinnerService: NgxSpinnerService) {}
+  constructor(private http: HttpClient, private router: Router, private spinnerService: NgxSpinnerService, 
+                private toastrService: ToastrService) {}
 
   getToken() {
     return this.token;
@@ -47,10 +49,16 @@ export class AuthService {
     const authData: AuthData = { email: email, password: password };
     this.http.post(BACKEND_URL + "register", authData).subscribe(
       () => {
+        this.toastrService.success("Successfully registered!", "Register success", {
+          positionClass: 'toast-bottom-right'
+        })
         this.router.navigate(["homepage"]);
       },
       error => {
         this.authStatusListener.next(false);
+        this.toastrService.error("Email was taken or some of inputs does not match!", "Register error", {
+          positionClass: 'toast-bottom-right'
+        })
       }
     );
   }
@@ -80,11 +88,17 @@ export class AuthService {
             );
             console.log(expirationDate);
             this.saveAuthData(token, expirationDate, this.userId, this.role);
+            this.toastrService.success("Successfully logged in!", "Login success", {
+              positionClass: 'toast-bottom-right'
+            })
             this.router.navigate(["homepage"]);
           }
         },
         error => {
           this.authStatusListener.next(false);
+          this.toastrService.error("Email or password does not match!", "Login error", {
+            positionClass: 'toast-bottom-right'
+          })
         }
       );
   }
@@ -119,6 +133,9 @@ export class AuthService {
       color: '#1E90FF',
       size: 'large',
     });
+    this.toastrService.success("Successfully logged out!", "Logged out success", {
+      positionClass: 'toast-bottom-right'
+    })
     setTimeout(() => {
       this.spinnerService.hide();
       this.router.navigate(["/"]);
