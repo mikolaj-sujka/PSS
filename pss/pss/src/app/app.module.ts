@@ -26,22 +26,20 @@ import { AboutUsComponent } from './subpage/about-us/about-us.component';
 import { ContactComponent } from './subpage/contact/contact.component';
 import { PostCreateComponent } from "../app/posts/post-create/post-create.component";
 import { PostListComponent } from "../app/posts/post-list/post-list.component";
-import { ErrorComponent } from "./error/error.component";
 import { SearchUsersTeamsComponent } from './search-users-teams/search-users-teams.component';
-
-// 3rd
-import { AuthInterceptor } from "./interceptors/auth-interceptor";
-import { ErrorInterceptor } from "./interceptors/error-interceptor";
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { LoadingInterceptor } from './interceptors/loading.interceptor';
-import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { MainPageComponent } from './main-page/main-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { TeamPageComponent } from './team-page/team-page.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
 import { FindMatchPageComponent } from './find-match-page/find-match-page.component';
-import { TextInputComponent } from './validators/text-input/text-input.component';
+
+// 3rd
+import { AuthInterceptor } from "./interceptors/auth-interceptor";
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { MultiTranslateHttpLoader } from 'ngx-translate-multi-http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -64,7 +62,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactComponent,
     PostCreateComponent,
     PostListComponent,
-    ErrorComponent,
     SearchUsersTeamsComponent,
     MainPageComponent,
     UserPageComponent,
@@ -85,6 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    ToastrModule.forRoot(),
     RouterModule,
     NgxSpinnerModule,
     ReactiveFormsModule,
@@ -101,10 +99,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}],
-  bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent]
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }
