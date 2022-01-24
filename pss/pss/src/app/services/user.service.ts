@@ -33,12 +33,12 @@ export class UserService {
 
   getSpecialUsers(): User[] {
     let specialUsers = [
-      {_id: "a", name: "Adam Adamowicz", email: "mail@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 25, weight: 80, height: 180, img: "", role: "user"},
-      {_id: "b", name: "Artur Arturowicz", email: "mail@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 26, weight: 81, height: 181, img: "", role: "user"},
-      {_id: "c", name: "Aleksander Aleksandrowicz", email: "mail@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 27, weight: 82, height: 182, img: "", role: "user"},
-      {_id: "d", name: "Adam Mickiewicz", email: "mail@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 28, weight: 83, height: 183, img: "", role: "user"},
-      {_id: "e", name: "Bartłomiej Przykład", email: "mail@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 29, weight: 84, height: 184, img: "", role: "user"},
-      {_id: "f", name: "Damian Damianowicz", email: "mail@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 25, weight: 85, height: 185, img: "", role: "user"},
+      {_id: "a", name: "Adam Adamowicz", email: "mail1@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 25, weight: 80, height: 180, img: "", role: "user"},
+      {_id: "b", name: "Artur Arturowicz", email: "mail2@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 26, weight: 81, height: 181, img: "", role: "user"},
+      {_id: "c", name: "Aleksander Aleksandrowicz", email: "mail3@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 27, weight: 82, height: 182, img: "", role: "user"},
+      {_id: "d", name: "Adam Mickiewicz", email: "mail4@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 28, weight: 83, height: 183, img: "", role: "user"},
+      {_id: "e", name: "Bartłomiej Przykład", email: "mail5@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 29, weight: 84, height: 184, img: "", role: "user"},
+      {_id: "f", name: "Damian Damianowicz", email: "mail6@mail.com", password: "abc", city: "Kraków", discipline: "", team: "", age: 25, weight: 85, height: 185, img: "", role: "user"},
 
     ]
     return specialUsers;

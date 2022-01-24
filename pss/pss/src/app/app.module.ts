@@ -41,6 +41,8 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { TeamPageComponent } from './team-page/team-page.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
 import { FindMatchPageComponent } from './find-match-page/find-match-page.component';
+import { TextInputComponent } from './validators/text-input/text-input.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -85,7 +87,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularMaterialModule,
     RouterModule,
     NgxSpinnerModule,
+    ReactiveFormsModule,
     TranslateModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
