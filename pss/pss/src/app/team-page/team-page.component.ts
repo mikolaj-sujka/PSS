@@ -6,6 +6,7 @@ import {NgForm} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {User} from "../models/user.model";
 import {Match} from "../models/match.model";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-team-page',
@@ -37,7 +38,8 @@ export class TeamPageComponent implements OnInit {
   specialUsers: User[];
   alertMessage = ""
 
-  constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService, private router: Router) {
+  constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService, private router: Router,
+              private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -100,7 +102,9 @@ export class TeamPageComponent implements OnInit {
   }
 
   addPlayer(user: User) {
-    this.alertMessage = "Zaproszono zawodnika!"
+    this.toastrService.success("Pomyślnie wysłano zaproszenie zawodnikowi do drużyny!", "Wysłano zaproszenie", {
+      positionClass: 'toast-bottom-right'
+    });
     const index: number = this.specialUsers.indexOf(user);
     if (index !== -1) {
       this.specialUsers.splice(index, 1);
@@ -111,7 +115,9 @@ export class TeamPageComponent implements OnInit {
   }
 
   deletePlayer(user: User) {
-    this.alertMessage = "Usunięto zawodnika!"
+    this.toastrService.success("Pomyślnie usunięto zawodnika z drużyny!", "Usunięto zawodnika", {
+      positionClass: 'toast-bottom-right'
+    });
     const index: number = this.team.users.indexOf(user);
     this.teamService.deleteSpecialPlayer(index);
     this.team = this.teamService.getSpecialCaptainTeam();

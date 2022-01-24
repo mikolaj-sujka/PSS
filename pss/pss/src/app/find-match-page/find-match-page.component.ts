@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Match} from "../models/match.model";
 import {Router} from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-find-match-page',
@@ -20,7 +21,7 @@ export class FindMatchPageComponent implements OnInit {
   dataSource = this.match;
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toastrService: ToastrService) {}
 
   ngOnInit(): void {
   }
@@ -28,7 +29,10 @@ export class FindMatchPageComponent implements OnInit {
   buttonPlay(element) {
     localStorage.setItem("Match", JSON.stringify(element));
     this.router.navigate(['/team-page/captain']);
-    //DODAC KOMUNIKAT - "zgłoszono mecz do zatwierdzenia przez ambasadora"
+
+    this.toastrService.success("Pomyślnie umówiono spotkanie!", "Dodano spotkanie", {
+      positionClass: 'toast-bottom-right'
+    });
   }
 
   buttonCancel() {
