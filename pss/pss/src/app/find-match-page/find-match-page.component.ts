@@ -11,9 +11,9 @@ import {Router} from "@angular/router";
 export class FindMatchPageComponent implements OnInit {
 
   public match: Match[] = [
-    {date: "17.01.2022", time: "17:23", address: "Kraków, ul. piaskowa 3", teamC: "Team1", team2: "Team2"},
-    {date: "17.01.2022", time: "17:23", address: "Kraków, ul. piaskowa 3", teamC: "Team2", team2: "Team2"},
-    {date: "17.01.2022", time: "17:23", address: "Kraków, ul. piaskowa 3", teamC: "Team3", team2: "Team2"},
+    {date: "28.01.2022", time: "17:00", address: "Kraków, ul. Piaskowa 3", teamC: "ABC Piłka", team2: ""},
+    {date: "22.02.2022", time: "11:00", address: "Kraków, ul. Głowackiego 17", teamC: "ZTEAM", team2: ""},
+    {date: "27.02.2022", time: "19:30", address: "Kraków, ul. Parkowa 8", teamC: "FC 2137", team2: ""},
   ]
 
   displayedColumns: string[] = ['Team', 'Date', 'Time', 'Place', 'Play'];
@@ -24,8 +24,11 @@ export class FindMatchPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buttonPlay() {
-    this.router.navigate(['/team-page/captain'])
+  buttonPlay(element) {
+    localStorage.setItem("Match", JSON.stringify(element));
+    //usunąć element
+
+    this.router.navigate(['/team-page/captain']);
   }
 
 }

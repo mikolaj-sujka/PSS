@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {User} from "../models/user.model";
+import {Match} from "../models/match.model";
 
 @Component({
   selector: 'app-team-page',
@@ -23,6 +24,13 @@ export class TeamPageComponent implements OnInit {
     img: ""
   };
 
+  //dodać to potem do serwisu
+  public match: Match[] = []
+
+  displayedColumns: string[] = ['Team', 'Date', 'Time', 'Place'];
+  dataSource = this.match;
+  //
+
   editMode = false;
   changePlayers = false;
   userId = localStorage.getItem("userId");
@@ -33,6 +41,7 @@ export class TeamPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTeam();
+    this.match.push(JSON.parse(localStorage.getItem("Match")));
   }
 
   getTeam(): void {

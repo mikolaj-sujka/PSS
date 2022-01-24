@@ -1,19 +1,17 @@
 <app-navigation></app-navigation>
 <div class="find-match-container">
   <table mat-table class="match-table" [dataSource]="dataSource">
-    <!-- User name Definition -->
+
     <ng-container matColumnDef="Team">
       <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.teamC}} </mat-cell>
     </ng-container>
 
-    <!-- Age Definition -->
     <ng-container matColumnDef="Date">
       <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
     </ng-container>
 
-    <!-- Title Definition -->
     <ng-container matColumnDef="Time">
       <mat-header-cell *matHeaderCellDef> Time </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
@@ -26,10 +24,9 @@
 
     <ng-container matColumnDef="Play">
       <mat-header-cell *matHeaderCellDef>
-
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button class="btn btn-outline-primary btn-edit" (click)="buttonPlay()">
+        <button class="btn btn-outline-primary btn-edit" (click)="buttonPlay(element)">
           Graj!
         </button>
       </mat-cell>
