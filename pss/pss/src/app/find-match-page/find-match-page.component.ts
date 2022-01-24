@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Match} from "../models/match.model";
-import { Time} from "@angular/common";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,12 +11,14 @@ export class FindMatchPageComponent implements OnInit {
 
   public match: Match[] = [
     {date: "28.01.2022", time: "17:00", address: "Kraków, ul. Piaskowa 3", teamC: "ABC Piłka", team2: ""},
-    {date: "22.02.2022", time: "11:00", address: "Kraków, ul. Głowackiego 17", teamC: "ZTEAM", team2: ""},
-    {date: "27.02.2022", time: "19:30", address: "Kraków, ul. Parkowa 8", teamC: "FC 2137", team2: ""},
+    {date: "22.02.2022", time: "11:00", address: "Kraków, ul. Głowackiego 17", teamC: "CBA Piłka", team2: ""},
+    {date: "28.02.2022", time: "19:00", address: "Kraków, ul. Nowa 6", teamC: "X Team", team2: ""},
+    {date: "01.03.2022", time: "20:00", address: "Kraków, ul. Orzechowa 6", teamC: "ABC Piłka", team2: ""},
   ]
 
   displayedColumns: string[] = ['Team', 'Date', 'Time', 'Place', 'Play'];
   dataSource = this.match;
+
 
   constructor(private router: Router) {}
 
@@ -26,8 +27,11 @@ export class FindMatchPageComponent implements OnInit {
 
   buttonPlay(element) {
     localStorage.setItem("Match", JSON.stringify(element));
-    //usunąć element
+    this.router.navigate(['/team-page/captain']);
+    //DODAC KOMUNIKAT - "zgłoszono mecz do zatwierdzenia przez ambasadora"
+  }
 
+  buttonCancel() {
     this.router.navigate(['/team-page/captain']);
   }
 

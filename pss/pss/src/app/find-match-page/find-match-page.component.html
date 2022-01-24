@@ -1,10 +1,12 @@
 <app-navigation></app-navigation>
+
 <div class="find-match-container">
+  <h3 class="match-list-header">mecze w twojej okolicy</h3>
   <table mat-table class="match-table" [dataSource]="dataSource">
 
     <ng-container matColumnDef="Team">
       <mat-header-cell *matHeaderCellDef> Team </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.teamC}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.teamC}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Date">
@@ -36,6 +38,7 @@
     <mat-header-row *matHeaderRowDef=displayedColumns></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </table>
+  <button class="btn btn-outline-primary btn-edit" style="margin-top: 20px" (click)="buttonCancel()"> Anuluj </button>
 
 </div>
 <app-footer></app-footer>
