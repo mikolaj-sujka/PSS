@@ -49,14 +49,14 @@ export class AuthService {
     const authData: AuthData = { email: email, password: password, name: name + " " + surname};
     this.http.post(BACKEND_URL + "register", authData).subscribe(
       () => {
-        this.toastrService.success("Successfully registered!", "Register success", {
+        this.toastrService.success("Sukces! zarejestrowano!", "Register success", {
           positionClass: 'toast-bottom-right'
         })
         this.router.navigate(["homepage"]);
       },
       error => {
         this.authStatusListener.next(false);
-        this.toastrService.error("Email was taken or some of inputs does not match!", "Register error", {
+        this.toastrService.error("Email jest zajęty lub wprowadzono niepoprawne dane!", "Register error", {
           positionClass: 'toast-bottom-right'
         })
       }
@@ -88,7 +88,7 @@ export class AuthService {
             );
             console.log(expirationDate);
             this.saveAuthData(token, expirationDate, this.userId, this.role);
-            this.toastrService.success("Successfully logged in!", "Login success", {
+            this.toastrService.success("Sukces! zalogowano!", "Login success", {
               positionClass: 'toast-bottom-right'
             })
             this.router.navigate(["homepage"]);
@@ -96,7 +96,7 @@ export class AuthService {
         },
         error => {
           this.authStatusListener.next(false);
-          this.toastrService.error("Email or password does not match!", "Login error", {
+          this.toastrService.error("Email lub hasło jest niepoprawne!", "Login error", {
             positionClass: 'toast-bottom-right'
           })
         }
@@ -133,7 +133,7 @@ export class AuthService {
       color: '#1E90FF',
       size: 'large',
     });
-    this.toastrService.success("Successfully logged out!", "Logged out success", {
+    this.toastrService.success("Sukces! wylogowano!", "Logged out success", {
       positionClass: 'toast-bottom-right'
     })
     setTimeout(() => {
